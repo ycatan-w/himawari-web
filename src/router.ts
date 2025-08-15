@@ -1,10 +1,10 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import { getRandomTheme } from '@/utils/colorTheme';
 import { isAuthenticated } from './modules/auth';
 import { LoginView, RegisterView } from '@/features/auth';
 import { DashboardView } from '@/features/dashboard';
 
-const routes = [
+const routes: RouteRecordRaw[] = [
   {
     name: 'home',
     path: '/',
@@ -37,7 +37,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.MODE !== 'production' ? '/himawari-web/': '/'),
+  history: createWebHistory(import.meta.env.MODE !== 'production' ? '/' : '/himawari-web/'),
   routes,
 });
 
