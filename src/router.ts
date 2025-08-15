@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import { getRandomTheme } from '@/utils/colorTheme';
 import { isAuthenticated } from './modules/auth';
 import { LoginView, RegisterView } from '@/features/auth';
@@ -37,8 +37,8 @@ const routes: RouteRecordRaw[] = [
 ];
 
 const router = createRouter({
-  // history: createWebHistory(),
-  history: createWebHistory(import.meta.env.MODE !== 'production' ? '/' : '/himawari-web/'),
+  // history: createWebHashHistory(),
+  history: createWebHashHistory(import.meta.env.MODE !== 'production' ? '/' : '/himawari-web/'),
   routes,
 });
 
