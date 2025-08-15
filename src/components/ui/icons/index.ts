@@ -1,0 +1,11 @@
+export { default as IconCalendar } from '@/components/ui/icons/IconCalendar.vue';
+export { default as IconClose } from '@/components/ui/icons/IconClose.vue';
+export { default as IconLogout } from '@/components/ui/icons/IconLogout.vue';
+export { default as IconInfo } from '@/components/ui/icons/IconInfo.vue';
+export { default as IconUp } from '@/components/ui/icons/IconUp.vue';
+export { default as IconDown } from '@/components/ui/icons/IconDown.vue';
+export { default as IconZoomOut } from '@/components/ui/icons/IconZoomOut.vue';
+export { default as IconZoomIn } from '@/components/ui/icons/IconZoomIn.vue';
+export { default as IconCancel } from '@/components/ui/icons/IconCancel.vue';
+export { default as IconDelete } from '@/components/ui/icons/IconDelete.vue';
+export { default as IconClock } from '@/components/ui/icons/IconClock.vue';

@@ -1,0 +1,160 @@
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+
+@import './form.css';
+
+.body-amber { @apply bg-amber-900; }
+.body-lime { @apply bg-lime-900; }
+.body-indigo { @apply bg-indigo-900; }
+
+.auth-main-amber { @apply bg-amber-900; }
+.auth-main-lime { @apply bg-lime-900; }
+.auth-main-indigo { @apply bg-indigo-900; }
+
+.auth-container { @apply w-full rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0; }
+.auth-container-amber { @apply border-amber-700 bg-amber-800; }
+.auth-container-lime { @apply border-lime-700 bg-lime-800; }
+.auth-container-indigo { @apply border-indigo-700 bg-indigo-800; }
+
+.auth-title { @apply text-xl font-bold leading-tight tracking-tight md:text-2xl; }
+
+.auth-text-amber { @apply text-amber-400; }
+.auth-text-lime { @apply text-lime-400; }
+.auth-text-indigo { @apply text-indigo-400; }
+
+.ddp-main-amber { @apply bg-amber-600; }
+.ddp-main-lime { @apply bg-lime-600; }
+.ddp-main-indigo { @apply bg-indigo-600; }
+
+.ddp-container-amber { @apply bg-amber-900; }
+.ddp-container-lime { @apply bg-lime-900; }
+.ddp-container-indigo { @apply bg-indigo-900; }
+
+.ddp-button-amber { @apply bg-amber-700 hover:bg-amber-600 }
+.ddp-button-lime { @apply bg-lime-700 hover:bg-lime-600 }
+.ddp-button-indigo { @apply bg-indigo-700 hover:bg-indigo-600 }
+
+.ddp-button-selected-amber { @apply bg-lime-600; }
+.ddp-button-selected-lime { @apply bg-indigo-600; }
+.ddp-button-selected-indigo { @apply bg-amber-600; }
+
+
+.at-side {
+  @apply w-25 h-50 rounded-tl shrink-0 text-xs sm:text-sm md:text-lg text-white;
+}
+.at-side-amber { @apply bg-amber-800; }
+.at-side-lime { @apply bg-lime-800; }
+.at-side-indigo { @apply bg-indigo-800; }
+
+.at-btn-zoom { @apply text-xl w-9 h-9 flex items-center justify-center rounded-full transition cursor-pointer; }
+.at-btn-zoom-amber { @apply hover:bg-lime-700 text-lime-200; }
+.at-btn-zoom-lime { @apply hover:bg-indigo-700 text-indigo-200; }
+.at-btn-zoom-indigo { @apply hover:bg-amber-700 text-amber-200; }
+
+.at-timeline {
+  @apply overflow-x-auto w-full border-l border-b  border-r rounded-tr h-50;
+}
+.at-timeline-amber { @apply border-b-amber-700 border-r-amber-700; }
+.at-timeline-lime { @apply border-b-lime-700 border-r-lime-700; }
+.at-timeline-indigo { @apply border-b-indigo-700 border-r-indigo-700; }
+
+.at-timeline-label {
+  @apply absolute transform  -translate-x-1/2 top-2.5;
+}
+.at-timeline-label-amber { @apply bg-amber-800; }
+.at-timeline-label-lime { @apply bg-lime-800; }
+.at-timeline-label-indigo { @apply bg-indigo-800; }
+
+.at-timeline-size { @apply flex w-full border-t border-b h-10; }
+.at-timeline-size-amber { @apply border-amber-700 bg-amber-800; }
+.at-timeline-size-lime { @apply border-lime-700 bg-lime-800; }
+.at-timeline-size-indigo { @apply border-indigo-700 bg-indigo-800; }
+
+.at-event { @apply absolute text-white text-sm rounded px-2 py-1 overflow-hidden whitespace-nowrap cursor-pointer; }
+.at-event-amber { @apply bg-lime-600; }
+.at-event-lime { @apply bg-indigo-600; }
+.at-event-indigo { @apply bg-amber-600; }
+
+.at-event-selected-amber { @apply bg-indigo-600; }
+.at-event-selected-lime { @apply bg-amber-600; }
+.at-event-selected-indigo { @apply bg-lime-600; }
+
+.e-form { @apply relative w-full rounded-b shadow p-4 space-y-6; }
+.e-form-amber { @apply bg-amber-800 text-amber-300; }
+.e-form-lime { @apply bg-lime-800 text-lime-300; }
+.e-form-indigo { @apply bg-indigo-800 text-indigo-300; }
+
+.e-form-title { @apply text-xl font-semibold relative border-l-4 pl-2; }
+.e-form-title-amber { @apply border-amber-300; }
+.e-form-title-lime { @apply border-lime-300; }
+.e-form-title-indigo { @apply border-indigo-300; }
+
+.e-form-btn {
+  @apply w-full sm:w-auto px-5 py-2 rounded-lg font-semibold text-white shadow-md
+    hover:shadow-lg hover:-translate-y-[1px]
+    transition-all duration-300 ease-out cursor-pointer;
+}
+
+.e-form-btn-amber {
+  @apply bg-gradient-to-br from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700;
+}
+.e-form-btn-lime {
+  @apply bg-gradient-to-br from-lime-500 to-lime-600 hover:from-lime-600 hover:to-lime-700;
+}
+.e-form-btn-indigo {
+  @apply bg-gradient-to-br from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700;
+}
+
+.journal-preview { @apply mt-4 p-4 rounded-t overflow-auto; }
+.journal-preview-amber { @apply bg-amber-700; }
+.journal-preview-lime { @apply bg-lime-700; }
+.journal-preview-indigo { @apply bg-indigo-700; }
+
+.journal-textarea {
+  @apply text-white p-2 rounded-b resize-none overflow-x-scroll transition-all duration-150 focus:outline-none;
+}
+.journal-textarea-amber { @apply bg-amber-800; }
+.journal-textarea-lime { @apply bg-lime-800; }
+.journal-textarea-indigo { @apply bg-indigo-800; }
+
+.separator { @apply h-8; }
+.separator-amber { @apply bg-amber-800; }
+.separator-lime { @apply bg-lime-800; }
+.separator-indigo { @apply bg-indigo-800; }
+
+.timepicker-main-button {
+  @apply px-4 py-2 text-xs md:text-lg cursor-pointer;
+}
+.timepicker-main-button-amber { @apply hover:bg-amber-600; }
+.timepicker-main-button-lime { @apply hover:bg-lime-600; }
+.timepicker-main-button-indigo { @apply hover:bg-indigo-600; }
+
+.timepicker-dropdown {
+  @apply absolute z-55 border rounded shadow-lg p-3 w-45;
+}
+.timepicker-dropdown-amber { @apply border-amber-500 bg-amber-600; }
+.timepicker-dropdown-lime { @apply border-lime-500 bg-lime-600; }
+.timepicker-dropdown-indigo { @apply border-indigo-500 bg-indigo-600; }
+
+/*
+ * DateDetailsPanel Slider
+ */
+.slide-enter-active, .slide-leave-active {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.slide-enter-from {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.slide-enter-to {
+  transform: translateX(0);
+  opacity: 1;
+}
+.slide-leave-from {
+  transform: translateX(0);
+  opacity: 1;
+}
+.slide-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}

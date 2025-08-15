@@ -1,0 +1,66 @@
+{
+  "journal": "Day Notes",
+  "agenda": "Timeline",
+  "title": {
+    "login": "Sign in to your account",
+    "register": "Create an account"
+  },
+  "label": {
+    "username": "Username",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December",
+    "year": "Year",
+    "month": "Month",
+    "days": "Days",
+    "hours": "Time slots",
+    "event_title": "What's happening?",
+    "event_description": "Add some details",
+    "new_event": "Plan Something New",
+    "edit_event": "Update Your Plan",
+    "journal_preview": "Preview",
+    "journal_write": "Write your journal"
+  },
+  "button": {
+    "signIn": "Sign in",
+    "register": "Create an account",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "event_save": "Save",
+    "event_cancel": "Cancel event changes",
+    "event_delete": "Delete",
+    "journal_publish": "Publish"
+  },
+  "text": {
+    "noAccount": "Don't have an account yet?",
+    "hasAccount": "Already have an account?"
+  },
+  "link": {
+    "signUp": "Sign up",
+    "login": "Login here"
+  },
+  "error": {
+    "login": {
+      "invalidAccount": "Invalid username or password."
+    },
+    "register": {
+      "usernameTaken": "Username is already taken.",
+      "passwordMismatch": "Passwords do not match."
+    }
+  },
+  "help": {
+    "journal_format": "This field uses Markdown format. You can format your text with headings, lists, links, and more.",
+    "journal_cheat": "View the Markdown cheat sheet"
+  }
+}

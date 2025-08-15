@@ -1,0 +1,66 @@
+{
+  "journal": "Notes du jour",
+  "agenda": "Chronologie",
+  "title": {
+    "login": "Connectez-vous à votre compte",
+    "register": "Créez un compte"
+  },
+  "label": {
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmez le mot de passe",
+    "january": "Janvier",
+    "february": "Février",
+    "march": "Mars",
+    "april": "Avril",
+    "may": "Mai",
+    "june": "Juin",
+    "july": "Juillet",
+    "august": "Août",
+    "september": "Septembre",
+    "october": "Octobre",
+    "november": "Novembre",
+    "december": "Décembre",
+    "year": "Année",
+    "month": "Mois",
+    "days": "Jours",
+    "hours": "Créneaux horaires",
+    "event_title": "Quoi de prévu ?",
+    "event_description": "Ajoutez quelques détails",
+    "new_event": "Planifier un nouvel événement",
+    "edit_event": "Mettre à jour l'événement",
+    "journal_preview": "Aperçu",
+    "journal_write": "Écrivez votre journal"
+  },
+  "button": {
+    "signIn": "Se connecter",
+    "register": "Créer un compte",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "event_save": "Enregistrer",
+    "event_cancel": "Annuler les modifications",
+    "event_delete": "Supprimer",
+    "journal_publish": "Publier"
+  },
+  "text": {
+    "noAccount": "Pas encore de compte ?",
+    "hasAccount": "Vous avez déjà un compte ?"
+  },
+  "link": {
+    "signUp": "Créer un compte",
+    "login": "Connexion ici"
+  },
+  "error": {
+    "login": {
+      "invalidAccount": "Nom d'utilisateur ou mot de passe incorrect."
+    },
+    "register": {
+      "usernameTaken": "Ce nom d'utilisateur est déjà utilisé.",
+      "passwordMismatch": "Les mots de passe ne correspondent pas."
+    }
+  },
+  "help": {
+    "journal_format": "Ce champ utilise le format Markdown. Vous pouvez formater votre texte avec des titres, listes, liens, etc.",
+    "journal_cheat": "Voir la fiche pratique Markdown"
+  }
+}
