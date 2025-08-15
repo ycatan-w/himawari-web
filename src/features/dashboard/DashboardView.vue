@@ -9,10 +9,10 @@ const { logoutAction } = useDashboard();
 <template>
   <header class="fixed flex items-center justify-between w-full px-3 py-3 mx-auto max-w-8xl lg:px-4 bg-gray-800">
     <div class="flex items-center">
-      <a href="/" class="flex">
+      <router-link to="/" class="flex">
         <img class="h-auto max-w-10 mr-3" src="@/assets/himawari-logo.svg"/>
         <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">Himawari - The Journal</span>
-      </a>
+      </router-link>
 
       <span class="pl-12">
         <div class="relative group">
