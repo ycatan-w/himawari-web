@@ -37,7 +37,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.MODE !== '' ? 'production': '/'),
+  history: createWebHistory(import.meta.env.MODE !== 'production' ? '/himawari-web/': '/'),
   routes,
 });
 
