@@ -37,6 +37,7 @@ const routes: RouteRecordRaw[] = [
 ];
 
 const router = createRouter({
+  // history: createWebHistory(),
   history: createWebHistory(import.meta.env.MODE !== 'production' ? '/' : '/himawari-web/'),
   routes,
 });

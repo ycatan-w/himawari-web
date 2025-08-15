@@ -6,7 +6,6 @@ import App from '@/App.vue'
 import router from '@/router.ts'
 import { initProvider } from '@/modules/providers'
 import { defaultLanguage, getSavedLanguage, messages } from '@/modules/lang'
-console.log(messages);
 
 initProvider('local');
 createApp(App)
@@ -15,7 +14,7 @@ createApp(App)
         legacy: false,
         locale: getSavedLanguage(),
         fallbackLocale: defaultLanguage,
-        messages: messages,
+        messages,
     })
   )
   .use(router)

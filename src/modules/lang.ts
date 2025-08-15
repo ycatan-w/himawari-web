@@ -1,6 +1,4 @@
-// import { en, fr } from '@/locales'
-import en from '@/locales/en.json';
-import fr from '@/locales/fr.json';
+import { en, fr } from '@/locales'
 export type LangCode = 'en' | 'fr';
 
 export interface LanguageOption {
