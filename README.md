@@ -9,7 +9,7 @@ It allows you to create, edit, and delete events through an **interactive timeli
 
 ## 🚀 Live Demo
 
-🔗 [View Demo](https://my-demo-site.com)
+🔗 [View Demo](ycatan-w.github.io/himawari-web/)
 
 ---
 
