@@ -5,40 +5,7 @@ import { useTimelineSection } from './useTimelineSection';
 
 const props = defineProps<{ date: Date, themeColors: string }>();
 const dateStr = props.date.toISOString().split('T')[0];
-const { selectedEventIdRef, scaleFactorRef, rawEventsRef, zoomInAction, zoomOutAction } = useTimelineSection(dateStr);
-// const addBtn = async (eventToAdd: NewEventData) => {
-//   provider.addEvent(eventToAdd);
-
-//   try {
-//       await provider.addEvent(eventToAdd);
-//     // showToast('Événement ajouté avec succès');
-//   } catch (err) {
-//     const e = err as ProviderError;
-//     if (e.code === 'VALIDATION_ERROR') {
-//       // validationErrors.value = e.details;
-//     } else {
-//       // showToast(e.message, 'error');
-//     }
-//   }
-
-//   mode.value = 'create';
-//   event.value = emptyEvent();
-// }
-// const editBtn = (eventToEdit: EventData) => {
-//   const indexToEdit = rawEvents.value.findIndex((item) => item.id === eventToEdit.id);
-//   rawEvents.value[indexToEdit] = { ...eventToEdit };
-//   mode.value = 'create';
-//   event.value = emptyEvent();
-// }
-// const cancelBtn = () => {
-//   mode.value = 'create';
-//   event.value = emptyEvent();
-// }
-// const deleteBtn = (eventToDelete: EventData) => {
-//   provider.deleteEvent(eventToDelete.id!)
-//   mode.value = 'create';
-//   event.value = emptyEvent();
-// }
+const { selectedEventIdRef, newEventStartRef, scaleFactorRef, rawEventsRef, zoomInAction, zoomOutAction } = useTimelineSection(dateStr);
 </script>
 
 <template>
@@ -58,28 +25,19 @@ const { selectedEventIdRef, scaleFactorRef, rawEventsRef, zoomInAction, zoomOutA
     </div>
 
     <Timeline
-      v-model="selectedEventIdRef"
+      v-model:selected-event-id="selectedEventIdRef"
       :scale-factor="scaleFactorRef"
       :theme-colors="themeColors"
       :raw-events-ref="rawEventsRef"
+      v-model:ghost-start="newEventStartRef"
     />
   </div>
 
   <EventForm
-    v-model="selectedEventIdRef"
+    v-model:selected-event-id="selectedEventIdRef"
+    v-model:draft-start="newEventStartRef"
     :date="date"
     :raw-events="rawEventsRef"
     :theme-colors="themeColors"
   />
-
-  <!-- <EventForm
-    v-model="event"
-    :date="date"
-    :theme-colors="themeColors"
-    :mode="mode"
-    :add-btn="addBtn"
-    :edit-btn="editBtn"
-    :cancel-btn="cancelBtn"
-    :delete-btn="deleteBtn"
-  /> -->
 </template>

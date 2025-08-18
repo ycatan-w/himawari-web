@@ -2,7 +2,7 @@ import { reactive, toValue, watch, type ModelRef, type Ref } from "vue";
 import type { EventData } from "@/modules/providers/base-provider";
 import { getProvider } from '@/modules/providers'
 
-export function useEventForm(date: Date, selectedEventId: ModelRef<number>, rawEvents: Ref<EventData[]>) {
+export function useEventForm(date: Date, selectedEventId: ModelRef<number>, rawEvents: Ref<EventData[]>, draftStart: Ref<number | null>) {
   const provider = getProvider();
   const errors = reactive({
     title: false,
@@ -85,6 +85,7 @@ export function useEventForm(date: Date, selectedEventId: ModelRef<number>, rawE
       description: form.description,
       date: date.toISOString()
     });
+    draftStart.value = null;
     rawEvents.value.push({ ...createdEvent });
     resetForm();
   }
@@ -99,11 +100,19 @@ export function useEventForm(date: Date, selectedEventId: ModelRef<number>, rawE
     if (!event) {
       return ;
     }
+    draftStart.value = null;
     form.start = minutesToTime(event.start);
     form.end = minutesToTime(event.end);
     form.title = event.title;
     form.description = event.description;
   });
+
+  watch(() => toValue(draftStart), (val) => {
+    if (val !== null) {
+      form.start = minutesToTime(val);
+      form.end = minutesToTime(val + 30);
+    }
+  })
 
   return { form, isEdition, addAction, editAction, deleteAction };
 }

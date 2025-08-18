@@ -3,6 +3,7 @@ import { getProvider } from '@/modules/providers';
 import type { EventData } from "@/modules/providers/base-provider";
 
 export function useTimelineSection(dateStr: string) {
+  const newEventStartRef = ref<number | null>(null)
   const selectedEventIdRef = ref<number>(0);
   const rawEventsRef = ref<EventData[]>([]);
   const scaleFactorRef = ref(1);
@@ -19,5 +20,5 @@ export function useTimelineSection(dateStr: string) {
     rawEventsRef.value = await provider.getEvents(dateStr);
   });
 
-  return { selectedEventIdRef, scaleFactorRef, rawEventsRef, zoomInAction, zoomOutAction }
+  return { selectedEventIdRef, newEventStartRef, scaleFactorRef, rawEventsRef, zoomInAction, zoomOutAction }
 }

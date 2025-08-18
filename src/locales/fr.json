@@ -62,5 +62,13 @@
   "help": {
     "journal_format": "Ce champ utilise le format Markdown. Vous pouvez formater votre texte avec des titres, listes, liens, etc.",
     "journal_cheat": "Voir la fiche pratique Markdown"
+  },
+  "modal": {
+    "delete": {
+      "title": "Confirmer la suppression",
+      "message": "Êtes-vous sûr de vouloir supprimer cet événement ?",
+      "cancel": "Annuler",
+      "delete": "Supprimer"
+    }
   }
 }

@@ -56,7 +56,9 @@ export const demoData = {
       description: "Outdoor activities to improve team cohesion."
     }
   ],
-  journals: {
-    id: 1, date: '2025-08-09', text: 'Ceci est une entrée de journal de démo.'
-  }
+  journals: [
+    {
+      id: 1, date: '2025-08-09', text: 'Ceci est une entrée de journal de démo.'
+    }
+  ]
 };

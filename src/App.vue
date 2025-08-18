@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import LanguageSwitcher from '@/components/LanguageSwitcher.vue';
+import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue';
 
 const route = useRoute();
 const currentBodyClass = computed(() => {

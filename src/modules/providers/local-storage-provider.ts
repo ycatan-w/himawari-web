@@ -19,7 +19,6 @@ export class LocalStorageProvider extends BaseProvider {
   }
 
   private initDemoData() {
-    // this.resetDemoData();
     if (!localStorage.getItem(this.eventsKey)) {
       localStorage.setItem(this.eventsKey, JSON.stringify(demoData.events));
     }
@@ -31,10 +30,11 @@ export class LocalStorageProvider extends BaseProvider {
     }
   }
 
-  private resetDemoData() {
+  resetDemoData() {
     localStorage.removeItem(this.eventsKey);
     localStorage.removeItem(this.journalKey);
     localStorage.removeItem(this.usersKey);
+    this.initDemoData();
   }
 
   private load<T>(key: string): T[] {
@@ -122,8 +122,10 @@ export class LocalStorageProvider extends BaseProvider {
 
   // ---- JOURNAL ----
   async getJournal(date: string) {
+    /** for demo purpose the first journal is returned */
     const journals = this.load<JournalData>(this.journalKey);
-    return journals.find(j => j.date === date) || null;
+
+    return journals[0] || null;
   }
   async addJournal(entry: Omit<JournalData, 'id'>) {
     const journals = this.load<JournalData>(this.journalKey);

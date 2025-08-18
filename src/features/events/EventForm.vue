@@ -5,18 +5,30 @@ import { FloatingInputStandard } from '@/components/ui/input';
 import { IconCancel, IconDelete, IconClock } from '@/components/ui/icons';
 import type { EventData } from '@/modules/providers/base-provider';
 import { useEventForm } from './useEventForm';
+import BaseModal from '@/components/common/BaseModal.vue';
 
-const selectedEventId = defineModel<number>({default: 0});
+const selectedEventId = defineModel<number>('selectedEventId', {default: 0});
+const draftStart = defineModel<number | null>('draftStart', {default: null})
+
 const props = defineProps<{
   date: Date
   themeColors: string,
   rawEvents: EventData[]
 }>();
-const { form, isEdition, addAction, editAction, deleteAction } = useEventForm(props.date, selectedEventId, toRef(props, 'rawEvents'));
+const { form, isEdition, addAction, editAction, deleteAction } = useEventForm(props.date, selectedEventId, toRef(props, 'rawEvents'), draftStart);
+const confirmDeleteOpen = ref(false);
 </script>
 
 <template>
-
+  <BaseModal
+    v-model:open="confirmDeleteOpen"
+    :title="$t('modal.delete.title')"
+    :message="$t('modal.delete.message')"
+    :confirm-text="$t('modal.delete.delete')"
+    :cancel-text="$t('modal.delete.cancel')"
+    @confirm="deleteAction(selectedEventId)"
+    :themeColors="themeColors"
+  />
   <form :class="['e-form', `e-form-${themeColors}`]">
     <div class="flex items-center gap-1">
       <h2 :class="['e-form-title', `e-form-title-${themeColors}`]">
@@ -26,7 +38,7 @@ const { form, isEdition, addAction, editAction, deleteAction } = useEventForm(pr
       <button
         v-if="isEdition()"
         type="button"
-        @click="isEdition() && deleteAction(selectedEventId)"
+        @click="() => { if (isEdition()) {confirmDeleteOpen = true} }"
         class="pl-2 cursor-pointer"
         :title="$t('button.event_delete')"
       >

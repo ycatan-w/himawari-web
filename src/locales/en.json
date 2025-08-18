@@ -62,5 +62,13 @@
   "help": {
     "journal_format": "This field uses Markdown format. You can format your text with headings, lists, links, and more.",
     "journal_cheat": "View the Markdown cheat sheet"
+  },
+  "modal": {
+    "delete": {
+      "title": "Confirm deletion",
+      "message": "Are you sure you want to delete this event?",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    }
   }
 }

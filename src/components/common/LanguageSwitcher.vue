@@ -1,12 +1,8 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-import { availableLanguages, saveLanguage, type LangCode } from '@/modules/lang'
+import { useLanguage } from './useLanguage';
 
-const { locale } = useI18n()
-function switchLanguage(lang: LangCode) {
-  locale.value = lang;
-  saveLanguage(lang);
-}
+const { availableLanguages, switchLanguageAction } = useLanguage();
+
 </script>
 
 <template>
@@ -16,7 +12,7 @@ function switchLanguage(lang: LangCode) {
     <button
       v-for="lang in availableLanguages"
       :key="lang.code"
-      @click="switchLanguage(lang.code)"
+      @click="switchLanguageAction(lang.code)"
       :title="lang.label"
       :aria-label="lang.label"
       class="cursor-pointer text-xl w-9 h-9 flex items-center justify-center rounded-full transition hover:bg-amber-700 text-amber-200"

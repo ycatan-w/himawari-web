@@ -1,26 +1,9 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import { marked } from 'marked'
+import { useJournalForm } from './useJournalForm';
 
-defineProps<{ date: Date, themeColors: string }>();
-
-const markdownText = ref('');
-const textareaRef = ref<HTMLTextAreaElement | null>(null);
-
-// Line height estimate (1.5rem = 24px), 8 lines = 192px
-const maxHeight = '192px';
-const renderedMarkdown = computed(() => marked.parse(markdownText.value));
-
-const autoResize = () => {
-  const el = textareaRef.value
-  if (!el) {
-    return;
-  }
-  el.style.height = 'auto' // reset first
-  el.style.height = Math.min(el.scrollHeight, 192) + 'px'
-};
-
-onMounted(() => autoResize());
+const props = defineProps<{ date: Date, themeColors: string }>();
+const dateStr = props.date.toISOString().split('T')[0];
+const { markdownTextRef, textareaRef, maxHeight, renderedMarkdown, autoResize } = useJournalForm(dateStr);
 </script>
 
 <template>
@@ -39,7 +22,7 @@ onMounted(() => autoResize());
     ></div>
     <div class="relative">
       <textarea
-        v-model="markdownText"
+        v-model="markdownTextRef"
         id="journal"
         name="journal"
         ref="textareaRef"

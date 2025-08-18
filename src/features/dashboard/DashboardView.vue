@@ -2,8 +2,20 @@
 import { IconLogout } from '@/components/ui/icons'
 import { PlannerView } from '@/features/planner';
 import { useDashboard } from './useDashboard';
+import IconRefresh from '@/components/ui/icons/IconRefresh.vue';
+import { getProvider, getProviderMode } from '@/modules/providers/provider-proxy';
+import type { LocalStorageProvider } from '@/modules/providers/local-storage-provider';
 
 const { logoutAction } = useDashboard();
+const mode = getProviderMode();
+const provider = getProvider();
+
+function resetDataAction() {
+  if (mode === 'local') {
+    (provider as LocalStorageProvider).resetDemoData();
+  }
+}
+
 </script>
 
 <template>
@@ -18,6 +30,14 @@ const { logoutAction } = useDashboard();
         <div class="relative group">
           <button @click="logoutAction()" type="button" class="cursor-pointer font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 text-amber-700 hover:text-white hover:bg-amber-700">
             <IconLogout />
+          </button>
+        </div>
+      </span>
+
+      <span class="pl-1" v-if="mode === 'local'">
+        <div class="relative group">
+          <button @click="resetDataAction()" type="button" class="cursor-pointer font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 text-amber-700 hover:text-white hover:bg-amber-700">
+            <IconRefresh /> Reset Demo data
           </button>
         </div>
       </span>
