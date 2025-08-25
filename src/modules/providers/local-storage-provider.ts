@@ -122,10 +122,8 @@ export class LocalStorageProvider extends BaseProvider {
 
   // ---- JOURNAL ----
   async getJournal(date: string) {
-    /** for demo purpose the first journal is returned */
-    const journals = this.load<JournalData>(this.journalKey);
-
-    return journals[0] || null;
+    /** for demo purpose all journals is returned */
+    return this.load<JournalData>(this.journalKey);
   }
   async addJournal(entry: Omit<JournalData, 'id'>) {
     const journals = this.load<JournalData>(this.journalKey);

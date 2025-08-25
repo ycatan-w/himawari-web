@@ -40,7 +40,7 @@
     "event_save": "Enregistrer",
     "event_cancel": "Annuler les modifications",
     "event_delete": "Supprimer",
-    "journal_publish": "Publier"
+    "journal_publish": "Envoyer"
   },
   "text": {
     "noAccount": "Pas encore de compte ?",
@@ -67,6 +67,7 @@
     "delete": {
       "title": "Confirmer la suppression",
       "message": "Êtes-vous sûr de vouloir supprimer cet événement ?",
+      "message_journal": "Êtes-vous sûr de vouloir supprimer cet note ?",
       "cancel": "Annuler",
       "delete": "Supprimer"
     }

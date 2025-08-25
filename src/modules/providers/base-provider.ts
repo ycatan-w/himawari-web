@@ -30,7 +30,7 @@ export abstract class BaseProvider {
   abstract updateEvent(event: EventData): Promise<EventData>;
   abstract deleteEvent(id: number): Promise<void>;
 
-  abstract getJournal(date: string): Promise<JournalData | null>;
+  abstract getJournal(date: string): Promise<JournalData[] | null>;
   abstract addJournal(entry: Omit<JournalData, 'id'>): Promise<JournalData>;
   abstract updateJournal(entry: JournalData): Promise<JournalData>;
   abstract deleteJournal(id: number): Promise<void>;

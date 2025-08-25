@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { toRef } from 'vue';
 import { IconCalendar, IconClose } from '@/components/ui/icons';
-import Journal from '@/features/journal/JournalForm.vue';
 import TimelineSection from './TimelineSection.vue';
 import { useDailyOverview } from './useDailyOverview';
+import JournalSection from './JournalSection.vue';
 
 const props = defineProps<{
   date: Date
@@ -54,7 +54,8 @@ const { modeRef, themeColorsRef, modes } = useDailyOverview(toRef(props, 'isShow
 
           <div class="flex-1">
             <TimelineSection v-if="modeRef === 'agenda'" :date="date" :theme-colors="themeColorsRef" />
-            <Journal v-else :date="date" :theme-colors="themeColorsRef" />
+            <JournalSection v-else :date="date" :theme-colors="themeColorsRef" />
+            <!-- <Journal v-else :date="date" :theme-colors="themeColorsRef" /> -->
           </div>
         </div>
       </div>

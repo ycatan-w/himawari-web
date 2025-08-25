@@ -58,7 +58,39 @@ export const demoData = {
   ],
   journals: [
     {
-      id: 1, date: '2025-08-09', text: 'Ceci est une entrée de journal de démo.'
+      id: 1,
+      date: "2025-08-09",
+      text: "### Morning Thoughts ☀️\n\nWoke up early and went for a short run. Felt great to start the day with movement."
+    },
+    {
+      id: 2,
+      date: "2025-08-09",
+      text: "### Quick Note\n\nTried working with no background music. Surprisingly, I was much more focused."
+    },
+    {
+      id: 3,
+      date: "2025-08-09",
+      text: "> *“Do what you can, with what you have, where you are.”* – Theodore Roosevelt\n\nGood reminder for today."
+    },
+    {
+      id: 4,
+      date: "2025-08-10",
+      text: "### Small Wins 🎉\n\n- Finished reading one chapter.  \n- Cleaned the desk.  \n- Replied to emails I had been ignoring."
+    },
+    {
+      id: 5,
+      date: "2025-08-10",
+      text: "### Reflection\n\nFelt tired in the afternoon, but a cup of tea helped. Not every day needs to be productive."
+    },
+    {
+      id: 6,
+      date: "2025-08-11",
+      text: "### Work Note 🚀\n\nPushed the new feature to staging. A few minor bugs, but overall smooth."
+    },
+    {
+      id: 7,
+      date: "2025-08-11",
+      text: "### Evening Wrap-up 🌙\n\nTook a walk after dinner. Calming, and gave me time to think."
     }
   ]
 };

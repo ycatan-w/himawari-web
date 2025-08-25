@@ -24,7 +24,7 @@ export class ApiProvider extends BaseProvider {
     throw 'Not implemented';
   }
 
-  async getJournal(date: string): Promise<JournalData | null> {
+  async getJournal(date: string): Promise<JournalData[] | null> {
     throw 'Not implemented';
   }
 

@@ -40,7 +40,7 @@
     "event_save": "Save",
     "event_cancel": "Cancel event changes",
     "event_delete": "Delete",
-    "journal_publish": "Publish"
+    "journal_publish": "Send"
   },
   "text": {
     "noAccount": "Don't have an account yet?",
@@ -67,6 +67,7 @@
     "delete": {
       "title": "Confirm deletion",
       "message": "Are you sure you want to delete this event?",
+      "message_journal": "Are you sure you want to delete this note?",
       "cancel": "Cancel",
       "delete": "Delete"
     }

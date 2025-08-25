@@ -1,1 +1,1 @@
-export { initProvider, getProvider } from '@/modules/providers/provider-proxy';
+export { initProvider, getProvider, getProviderMode } from '@/modules/providers/provider-proxy';

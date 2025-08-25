@@ -1,18 +1,21 @@
 <script setup lang="ts">
-import { IconLogout } from '@/components/ui/icons'
+import { IconLogout, IconRefresh } from '@/components/ui/icons'
 import { PlannerView } from '@/features/planner';
 import { useDashboard } from './useDashboard';
-import IconRefresh from '@/components/ui/icons/IconRefresh.vue';
-import { getProvider, getProviderMode } from '@/modules/providers/provider-proxy';
 import type { LocalStorageProvider } from '@/modules/providers/local-storage-provider';
+import { ref } from 'vue';
+import { getProvider, getProviderMode } from '@/modules/providers';
 
 const { logoutAction } = useDashboard();
+const resetRef = ref(false);
 const mode = getProviderMode();
 const provider = getProvider();
 
 function resetDataAction() {
   if (mode === 'local') {
     (provider as LocalStorageProvider).resetDemoData();
+    resetRef.value = true;
+    setTimeout(() => resetRef.value = false, 5000);
   }
 }
 
@@ -28,7 +31,7 @@ function resetDataAction() {
 
       <span class="pl-12">
         <div class="relative group">
-          <button @click="logoutAction()" type="button" class="cursor-pointer font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 text-amber-700 hover:text-white hover:bg-amber-700">
+          <button @click="logoutAction()" type="button" class="cursor-pointer font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 btn-amber-700">
             <IconLogout />
           </button>
         </div>
@@ -36,8 +39,8 @@ function resetDataAction() {
 
       <span class="pl-1" v-if="mode === 'local'">
         <div class="relative group">
-          <button @click="resetDataAction()" type="button" class="cursor-pointer font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 text-amber-700 hover:text-white hover:bg-amber-700">
-            <IconRefresh /> Reset Demo data
+          <button @click="resetDataAction()" type="button" class="cursor-pointer font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 btn-amber-700">
+            <IconRefresh /> Reset demo data
           </button>
         </div>
       </span>
@@ -46,4 +49,8 @@ function resetDataAction() {
   <main class="pt-17">
     <PlannerView />
   </main>
+
+  <div v-if="resetRef" class="fixed flex items-center w-full max-w-xs p-4 space-x-4 divide-x rounded-lg shadow-sm right-5 bottom-5 text-gray-400 divide-gray-700 bg-gray-800" role="alert">
+    <div class="text-sm font-normal">Demo data has been reset.</div>
+  </div>
 </template>

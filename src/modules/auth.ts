@@ -39,21 +39,3 @@ export function getCurrentUser(): string | null {
 export function getToken(): string | null {
   return localStorage.getItem(STORAGE_AUTH_TOKEN_KEY);
 }
-
-
-/*
-
-j'ai cette utilsation dans `auth.js`:
-```
-import { getProvider } from "@/modules/providers";
-const provider = getProvider();
-```
-
-le provider est pas encore init quand c'est utiliser (via le router.ts)
-j'ai changer l'utilisation en:
-```
-const provider = () => getProvider();
-```
-est la bonne facon de faire ?
-
-*/

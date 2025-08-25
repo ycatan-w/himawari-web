@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, onUnmounted } from 'vue';
-import IconCancel from '../ui/icons/IconCancel.vue';
+import { IconCancel } from '@/components/ui/icons';
 
 const props = defineProps<{
   open: boolean
@@ -50,18 +50,16 @@ onUnmounted(() => document.removeEventListener('keydown', onKey));
     <transition name="fade-scale">
       <div
         v-if="localOpen"
-        class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/0 backdrop-blur-sm"
         @click.self="close"
       >
         <div
           class="relative bg-gray-900 rounded-3xl shadow-2xl w-full max-w-md overflow-hidden border border-gray-700"
         >
-          <!-- Accent bar (thématique) -->
           <div
             :class="['absolute top-0 left-0 h-full w-2', `bg-${themeColors}-500`]"
           />
 
-          <!-- Contenu -->
           <div class="p-6 pl-8">
             <h2 class="text-xl font-bold mb-2 text-gray-200">{{ title }}</h2>
             <p class="text-sm text-gray-300 mb-6 leading-relaxed">
