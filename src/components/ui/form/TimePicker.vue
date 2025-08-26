@@ -1,34 +1,35 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 import { TimePickerSpinner } from '@/components/ui/form';
+import { useCommonColorTheme, type Theme } from '@/utils/colorTheme';
 
 const props = defineProps<{
   modelValue: string
-  themeColors: string
-}>()
-const emit = defineEmits(['update:modelValue'])
+  themeColors: Theme
+}>();
+const emit = defineEmits(['update:modelValue']);
 
-const isOpen = ref(false)
-const pickerRef = ref<HTMLElement | null>(null)
-const toggleButtonRef = ref<HTMLElement | null>(null)
-const selected = ref({ hour: 0, minute: 0 })
-const hour = ref(0)
-const minute = ref(0)
+const isOpen = ref(false);
+const pickerRef = ref<HTMLElement | null>(null);
+const toggleButtonRef = ref<HTMLElement | null>(null);
+const selected = ref({ hour: 0, minute: 0 });
+const hour = ref(0);
+const minute = ref(0);
 
 const displayTime = computed(() =>
   `${selected.value.hour.toString().padStart(2, '0')}:${selected.value.minute.toString().padStart(2, '0')}`
-)
+);
 
 const confirm = () => {
-  selected.value = { hour: hour.value, minute: minute.value }
+  selected.value = { hour: hour.value, minute: minute.value };
   emit(
     'update:modelValue',
     `${selected.value.hour.toString().padStart(2, '0')}:${selected.value.minute.toString().padStart(2, '0')}`
-  )
-  isOpen.value = false
+  );
+  cancel()
 }
 const cancel = () => {
-  isOpen.value = false
+  isOpen.value = false;
 }
 const open = () => {
   if (isOpen.value) {
@@ -40,14 +41,14 @@ const open = () => {
   minute.value = selected.value.minute;
 }
 const onClickOutside = (e : MouseEvent)  => {
-  const target = e.target as Node
+  const target = e.target as Node;
 
   const clickedOutside =
     pickerRef.value && !pickerRef.value.contains(target) &&
-    toggleButtonRef.value && !toggleButtonRef.value.contains(target)
+    toggleButtonRef.value && !toggleButtonRef.value.contains(target);
 
   if (isOpen.value && clickedOutside) {
-    cancel()
+    cancel();
   }
 }
 
@@ -55,22 +56,19 @@ watch(
   () => props.modelValue,
   (val) => {
     if (val) {
-      const [h, m] = val.split(':').map(Number)
+      const [h, m] = val.split(':').map(Number);
       hour.value = h;
       minute.value = m;
-      selected.value = { hour: h, minute: m }
+      selected.value = { hour: h, minute: m };
     }
   },
   { immediate: true }
-)
+);
 
-onMounted(() => {
-  document.addEventListener('click', onClickOutside)
-})
+onMounted(() => document.addEventListener('click', onClickOutside));
 
-onBeforeUnmount(() => {
-  document.removeEventListener('click', onClickOutside)
-})
+onBeforeUnmount(() => document.removeEventListener('click', onClickOutside));
+const timepickerColor = useCommonColorTheme(props.themeColors, 'timepicker');
 </script>
 
 <template>
@@ -80,8 +78,8 @@ onBeforeUnmount(() => {
       ref="toggleButtonRef"
       type="button"
       :class="[
-        'timepicker-main-button',
-        `timepicker-main-button-${themeColors}`
+        'px-4 py-2 text-xs md:text-lg cursor-pointer',
+        timepickerColor.button
       ]"
     >
       {{ displayTime }}
@@ -91,8 +89,8 @@ onBeforeUnmount(() => {
       v-if="isOpen"
       ref="pickerRef"
       :class="[
-        'timepicker-dropdown',
-        `timepicker-dropdown-${themeColors}`
+        'absolute z-55 border rounded shadow-lg p-3 w-45',
+        timepickerColor.dropdown
       ]"
     >
       <div class="flex items-center justify-center">
@@ -105,14 +103,17 @@ onBeforeUnmount(() => {
         <button
           @click="cancel"
           type="button"
-          class="text-sm text-amber-950 hover:underline cursor-pointer"
+          class="text-sm text-white/90 hover:underline cursor-pointer"
         >
           {{ $t('button.cancel') }}
         </button>
         <button
           @click="confirm"
           type="button"
-          class="px-3 py-1 text-sm bg-amber-500 text-white rounded hover:bg-amber-600 cursor-pointer"
+          :class="[
+            `px-3 py-1 text-sm rounded cursor-pointer`,
+            timepickerColor.confirm
+          ]"
         >
           {{ $t('button.confirm') }}
         </button>

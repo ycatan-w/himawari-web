@@ -3,19 +3,18 @@ import { provide } from 'vue';
 import JournalLog from '../journal/JournalLog.vue';
 import JournalForm from '../journal/JournalForm.vue';
 import { useJournalSection } from './useJournalSection';
+import type { Theme } from '@/utils/colorTheme';
 
 const props = defineProps<{
   date: Date
-  themeColors: string
+  themeColors: Theme
 }>();
 provide("journalContext", {
   date: props.date,
-  themeColors: props.themeColors,
 });
 
 const dateStr = props.date.toISOString().split('T')[0];
 const { journalEntriesRef, newEntryRef, entryToEditRef } = useJournalSection(dateStr);
-
 </script>
 
 <template>

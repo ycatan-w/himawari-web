@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, onUnmounted } from 'vue';
 import { IconCancel } from '@/components/ui/icons';
+import { useCommonColorTheme, type Theme } from '@/utils/colorTheme';
 
 const props = defineProps<{
   open: boolean
@@ -8,7 +9,7 @@ const props = defineProps<{
   message?: string
   confirmText?: string
   cancelText?: string
-  themeColors?: string
+  themeColors: Theme
 }>();
 
 const emit = defineEmits<{
@@ -43,6 +44,7 @@ function onKey(e: KeyboardEvent) {
 }
 onMounted(() => document.addEventListener('keydown', onKey));
 onUnmounted(() => document.removeEventListener('keydown', onKey));
+const { background, button } = useCommonColorTheme(props.themeColors, 'modal');
 </script>
 
 <template>
@@ -57,7 +59,7 @@ onUnmounted(() => document.removeEventListener('keydown', onKey));
           class="relative bg-gray-900 rounded-3xl shadow-2xl w-full max-w-md overflow-hidden border border-gray-700"
         >
           <div
-            :class="['absolute top-0 left-0 h-full w-2', `bg-${themeColors}-500`]"
+            :class="['absolute top-0 left-0 h-full w-2', background]"
           />
 
           <div class="p-6 pl-8">
@@ -78,9 +80,7 @@ onUnmounted(() => document.removeEventListener('keydown', onKey));
               <button
                 :class="[
                   'px-4 py-2 rounded-xl text-white shadow transition cursor-pointer',
-                  themeColors
-                    ? `bg-${themeColors}-500 hover:bg-${themeColors}-600`
-                    : 'bg-blue-600 hover:bg-blue-700'
+                  button
                 ]"
                 @click="confirm"
               >

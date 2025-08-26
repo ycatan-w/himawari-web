@@ -2,13 +2,14 @@
 import { computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue';
+import { useFeatureColorTheme } from './utils/colorTheme';
 
 const route = useRoute();
 const currentBodyClass = computed(() => {
-  if (typeof route.meta.theme === 'function') {
-    route.meta.themeValue = route.meta.theme();
+  if (route.meta.feature) {
+    const { featureColorTheme } = useFeatureColorTheme(route.meta.feature as string);
 
-    return `body-${route.meta.themeValue}`;
+    return featureColorTheme.body;
   }
 
   return route.meta.bodyClass;

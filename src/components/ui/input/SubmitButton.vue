@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ButtonForm } from '@/components/ui/input';
+import type { Theme } from '@/utils/colorTheme';
 
 const { colorScheme } = defineProps<{
-colorScheme?: string
+colorScheme: Theme
 label: string
 }>();
 </script>

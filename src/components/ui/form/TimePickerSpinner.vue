@@ -25,10 +25,10 @@ function decrease() {
 
 <template>
   <div class="flex flex-col items-center w-16 select-none">
-    <button @click="increase" class="text-xl" type="button"><IconUp /></button>
+    <button @click="increase" class="text-xl cursor-pointer" type="button"><IconUp /></button>
     <div class="my-2 text-lg font-bold">
       {{ value.toString().padStart(2, '0') }}
     </div>
-    <button @click="decrease" class="text-xl" type="button"><IconDown /></button>
+    <button @click="decrease" class="text-xl cursor-pointer" type="button"><IconDown /></button>
   </div>
 </template>

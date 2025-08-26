@@ -20,19 +20,26 @@ function resetDataAction() {
 }
 const toastRef = ref<InstanceType<typeof Toast> | null>(null);
 const showSidebar = ref(false);
+const colors = 'text-amber-700 hover:text-white hover:bg-amber-700';
 </script>
 
 <template>
-  <header class="fixed flex items-center justify-between w-full px-3 py-3 mx-auto max-w-8xl lg:px-4 bg-gray-800">
-    <div class="flex items-center">
+  <div class="flex flex-col h-screen text-white">
+    <header class="flex items-center w-full px-3 py-3 mx-auto max-w-8xl lg:px-4 bg-gray-800">
       <router-link to="/" class="flex">
         <img class="h-10 w-10 mr-3" src="@/assets/himawari-logo.svg"/>
-        <span class="self-center hidden md:block text-2xl font-semibold whitespace-nowrap text-white">Himawari - The Journal</span>
+        <span class="self-center hidden md:block text-2xl font-semibold whitespace-nowrap text-white/80">Himawari - The Journal</span>
       </router-link>
 
       <span class="pl-2">
         <div class="relative group">
-          <button @click="logoutAction()" type="button" class="cursor-pointer font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center btn-amber-700">
+          <button
+            @click="logoutAction()"
+            type="button"
+            :class="[
+              `cursor-pointer font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center btn-amber-700`,
+              colors
+            ]">
             <IconLogout />
           </button>
         </div>
@@ -43,17 +50,18 @@ const showSidebar = ref(false);
           <button
             @click="resetDataAction()"
             type="button"
-            class="cursor-pointer font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center btn-amber-700"
+            :class="[
+              `cursor-pointer font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center`,
+              colors
+            ]"
           >
             <IconRefresh /> <span class="hidden md:block">Reset demo data</span>
           </button>
         </div>
       </span>
-    </div>
-  </header>
+    </header>
 
-  <div class="flex pt-17 h-full text-white">
-    <main class="flex-1 overflow-auto">
+    <main class="flex-1 flex flex-col">
       <PlannerView />
       <button
         class="cursor-pointer z-25 fixed bottom-1 right-1 p-3 rounded-full bg-amber-600 hover:bg-amber-500"
@@ -76,3 +84,25 @@ const showSidebar = ref(false);
 
   <Toast ref="toastRef" />
 </template>
+
+<style lang="css" scoped>
+.slide-enter-active, .slide-leave-active {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.slide-enter-from {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.slide-enter-to {
+  transform: translateX(0);
+  opacity: 1;
+}
+.slide-leave-from {
+  transform: translateX(0);
+  opacity: 1;
+}
+.slide-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}
+</style>

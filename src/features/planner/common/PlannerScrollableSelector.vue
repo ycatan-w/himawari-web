@@ -1,26 +1,38 @@
 <script setup lang="ts">
 import type { ModelRef } from 'vue';
 import { usePlannerScrollableSelector } from './usePlannerScrollableSelector';
+import { useCommonColorTheme, type Theme } from '@/utils/colorTheme';
 
 const selected = defineModel<number>() as ModelRef<number>;
-const { items, keyAsValue, formatItem = (item: string | number, index: number) => item } = defineProps<{
+const { items, keyAsValue, formatItem = (item: string | number, index: number) => item, colorTheme } = defineProps<{
   label: string
   items: (string|number)[]
   keyAsValue?: boolean
-  colorTheme: string
+  colorTheme: Theme
   currentIndex: number
   btnSize: string
   formatItem?: (item: string | number, index: number) => string|number
 }>();
 
 const { itemRefs, formattedItems } = usePlannerScrollableSelector(selected, items, keyAsValue);
+const { container, button, button_selected, text } = useCommonColorTheme(colorTheme, 'planner_scrollable');
 </script>
 
 <template>
-  <div :class="`css-container-${colorTheme} flex h-20`">
-    <div class="w-[80px] text-center font-semibold pt-2">{{ label }}</div>
+  <div
+    :class="[
+      `flex h-30`,
+      container
+    ]"
+  >
     <div
-      class="flex gap-5 w-full h-full overflow-x-auto scrollbar-hide snap-x snap-mandatory p-4"
+      :class="[
+        'w-[80px] text-center font-semibold pt-2',
+        text
+      ]"
+    >{{ label }}</div>
+    <div
+      class="flex w-full h-full overflow-x-auto scrollbar-hide snap-x snap-mandatory"
     >
       <button
         v-for="{ item, index, value } in formattedItems"
@@ -28,33 +40,25 @@ const { itemRefs, formattedItems } = usePlannerScrollableSelector(selected, item
         :ref="el => el && (itemRefs[value] = (el as HTMLElement))"
         @click="selected = value"
         :class="[
-          'text-base shrink-0 snap-center cursor-pointer',
+          'text-base rounded-full shrink-0 snap-center cursor-pointer',
           btnSize,
-          selected === value ? `css-button-selected-${colorTheme}` : `css-button-${colorTheme}`,
-          currentIndex === value && 'border border-red-800'
+          button,
+          selected === value && button_selected,
         ]"
       >
-        {{ formatItem(item, index) }}
+        <span
+          :class="[
+            currentIndex === value && 'underline underline-offset-4'
+          ]"
+        >
+          {{ formatItem(item, index) }}
+        </span>
       </button>
     </div>
   </div>
 </template>
 
 <style lang="css" scoped>
-@import 'tailwindcss';
-
-.css-container-amber { @apply bg-amber-600; }
-.css-container-lime { @apply bg-lime-600; }
-.css-container-indigo { @apply bg-indigo-600; }
-
-.css-button-amber { @apply bg-amber-500 hover:bg-amber-400; }
-.css-button-lime { @apply bg-lime-500 hover:bg-lime-400; }
-.css-button-indigo { @apply bg-indigo-500 hover:bg-indigo-400; }
-
-.css-button-selected-amber { @apply bg-amber-700; }
-.css-button-selected-lime { @apply bg-lime-700; }
-.css-button-selected-indigo { @apply bg-indigo-700; }
-
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }

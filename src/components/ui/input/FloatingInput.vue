@@ -1,20 +1,26 @@
 <script setup lang="ts">
-import { useAttrs } from 'vue';
+import { computed, useAttrs } from 'vue';
 
 const modelValue = defineModel();
-defineProps<{
+const { inputClass, labelClass } = defineProps<{
   id: string
   label: string
   type?: string
   divClass?: string
-  inputClass?: string
+  inputClass?: string | string[] | Record<string, boolean>
   inputErrorClass?: string
-  labelClass?: string
+  labelClass?: string | string[] | Record<string, boolean>
   labelErrorClass?: string
   error?: boolean | null
   errorMsg?: string
 }>()
 const attrs = useAttrs()
+const computedInputClass = computed(() => {
+  return [inputClass].flat();
+});
+const computedLabelClass = computed(() => {
+  return [labelClass].flat();
+});
 </script>
 
 <template>
@@ -27,14 +33,14 @@ const attrs = useAttrs()
       placeholder=" "
       v-bind="attrs"
       :class="[
-        inputClass,
+        computedInputClass,
         error ?? inputErrorClass
       ]"
     />
     <label
       :for="id"
       :class="[
-        labelClass,
+        computedLabelClass,
         error ?? labelErrorClass
       ]"
     >

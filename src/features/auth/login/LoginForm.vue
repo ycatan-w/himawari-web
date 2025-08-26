@@ -2,8 +2,10 @@
 import { FloatingInputFilled, SubmitButton } from '@/components/ui/input';
 import { IconInfo } from '@/components/ui/icons';
 import { useLogin } from './useLogin'
+import { useFeatureColorTheme } from '@/utils/colorTheme';
 
 const { form, error, loginAction } = useLogin();
+const { colorPalette } = useFeatureColorTheme('auth');
 </script>
 
 <template>
@@ -13,6 +15,7 @@ const { form, error, loginAction } = useLogin();
       id="username"
       type="text"
       :label="$t('label.username')"
+      :color-scheme="colorPalette"
       autocomplete="off"
       required
     />
@@ -22,9 +25,14 @@ const { form, error, loginAction } = useLogin();
       id="password"
       type="password"
       :label="$t('label.password')"
+      :color-scheme="colorPalette"
       required
     />
-    <SubmitButton :label=" $t('button.signIn')" />
+
+    <SubmitButton
+      :label=" $t('button.signIn')"
+      :color-scheme="colorPalette"
+    />
   </form>
 
   <div v-if="error" class="fixed inset-x-0 bottom-0 z-50 flex gap-2 mb-0">

@@ -1,8 +1,8 @@
-import { createRouter, createWebHashHistory, createWebHistory, type RouteRecordRaw } from 'vue-router'
-import { getRandomTheme } from '@/utils/colorTheme';
+import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router'
 import { isAuthenticated } from './modules/auth';
 import { LoginView, RegisterView } from '@/features/auth';
 import { DashboardView } from '@/features/dashboard';
+import { useFeatureColorTheme } from './utils/colorTheme';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -11,7 +11,7 @@ const routes: RouteRecordRaw[] = [
     component: DashboardView,
     meta: {
       requiresAuth: true,
-      bodyClass: 'bg-gray-800'
+      bodyClass: 'bg-gray-900'
     }
   },
   {
@@ -20,8 +20,7 @@ const routes: RouteRecordRaw[] = [
     component: LoginView,
     meta: {
       guestOnly: true,
-      theme: () => getRandomTheme(),
-      themeValue: ''
+      feature: 'auth'
     }
   },
   {
@@ -30,14 +29,12 @@ const routes: RouteRecordRaw[] = [
     component: RegisterView,
     meta: {
       guestOnly: true,
-      theme: () => getRandomTheme(),
-      themeValue: ''
+      feature: 'auth',
     }
   },
 ];
 
 const router = createRouter({
-  // history: createWebHashHistory(),
   history: createWebHashHistory(import.meta.env.MODE !== 'production' ? '/' : '/himawari-web/'),
   routes,
 });
@@ -50,6 +47,9 @@ router.beforeEach((to, from) => {
   }
   if (to.meta.guestOnly && loggedIn) {
     return { name: 'home' };
+  }
+  if (to.meta.feature) {
+    useFeatureColorTheme(to.meta.feature as string, true);
   }
 });
 

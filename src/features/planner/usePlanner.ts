@@ -5,15 +5,15 @@ export function usePlanner() {
 
   const handleKeydown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
-      showOverview.value = false
+      showOverview.value = false;
     }
   };
 
   watch(showOverview, (isShown) => {
     if (isShown) {
-      window.addEventListener('keydown', handleKeydown)
+      window.addEventListener('keydown', handleKeydown);
     } else {
-      window.removeEventListener('keydown', handleKeydown)
+      window.removeEventListener('keydown', handleKeydown);
     }
   });
   onUnmounted(() => {

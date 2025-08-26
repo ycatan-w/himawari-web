@@ -18,9 +18,9 @@ watch(() => props.daysInMonth, () => {
 </script>
 
 <template>
-  <div class="bg-indigo-500 flex h-full">
-    <div class="w-[80px] text-center font-semibold pt-2">{{ $t('label.days') }}</div>
-    <div :class="`grid grid-cols-7 grid-rows-${rowDaysRef} gap-5 p-4 min-h-[calc(100vh-225px)] w-full`">
+  <div class="bg-indigo-950 flex h-full">
+    <div class="w-[80px] text-center font-semibold pt-2 text-indigo-400">{{ $t('label.days') }}</div>
+    <div :class="`grid grid-cols-7 grid-rows-${rowDaysRef} flex-1 h-full`">
       <div
         v-for="day in daysInMonth"
         :key="day"
@@ -31,12 +31,17 @@ watch(() => props.daysInMonth, () => {
         ]"
         :class="[
           'w-full h-full flex items-center justify-center cursor-pointer',
-          'bg-indigo-700 hover:bg-indigo-600',
-          dayRef === day && 'ring-2 ring-indigo-400',
-          currentDay === day && 'border border-red-800'
+          'text-indigo-700 rounded-full hover:text-white hover:bg-indigo-700',
+          dayRef === day && 'text-white bg-indigo-700',
         ]"
       >
-        {{ day }}
+        <span
+          :class="[
+             currentDay === day && 'underline underline-offset-4'
+          ]"
+        >
+          {{ day }}
+        </span>
       </div>
     </div>
   </div>

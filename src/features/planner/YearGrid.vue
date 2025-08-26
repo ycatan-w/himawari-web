@@ -14,7 +14,7 @@ defineProps<{
   <PlannerScrollableSelector
     v-model="yearRef"
     color-theme="amber"
-    btn-size="px-3 py-2"
+    btn-size="px-15.5 py-3"
     :label="$t('label.year')"
     :items="years"
     :current-index="currentYear"

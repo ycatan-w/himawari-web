@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { FloatingInputFilled, SubmitButton } from '@/components/ui/input'
 import { useRegister } from './useRegister';
+import { useFeatureColorTheme } from '@/utils/colorTheme';
 
 const { form, errors, registerAction } = useRegister();
+const { colorPalette } = useFeatureColorTheme('auth');
 </script>
 
 <template>
@@ -14,6 +16,7 @@ const { form, errors, registerAction } = useRegister();
       :label="$t('label.username')"
       :error="errors.username"
       :errorMsg="$t('error.register.usernameTaken')"
+      :color-scheme="colorPalette"
       autocomplete="off"
       required
     />
@@ -24,6 +27,7 @@ const { form, errors, registerAction } = useRegister();
       type="password"
       :label="$t('label.password')"
       :error="errors.password"
+      :color-scheme="colorPalette"
       autocomplete="off"
       required
     />
@@ -34,9 +38,13 @@ const { form, errors, registerAction } = useRegister();
       :label="$t('label.confirmPassword')"
       :error="errors.password"
       :errorMsg="$t('error.register.passwordMismatch')"
+      :color-scheme="colorPalette"
       autocomplete="off"
       required
     />
-    <SubmitButton :label=" $t('button.register')" />
+    <SubmitButton
+      :label=" $t('button.register')"
+      :color-scheme="colorPalette"
+    />
   </form>
 </template>

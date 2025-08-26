@@ -1,0 +1,48 @@
+{
+  "form": {
+    "input_filled": "text-lime-200 bg-lime-900 border-lime-300 focus:border-cyan-600",
+    "textarea_filled": "bg-lime-900 text-lime-200 border-lime-300 focus:border-cyan-600",
+    "label_filled": "bg-lime-900 text-lime-500 peer-focus:text-cyan-600",
+    "button": "hover:text-lime-500 bg-lime-600 hover:bg-lime-700 focus:ring-lime-800",
+    "input_standard": "text-lime-200 border-lime-300 focus:border-cyan-600",
+    "textarea_standard": "text-lime-200 border-lime-300 focus:border-cyan-600",
+    "label_standard": "text-lime-500 peer-focus:text-cyan-600"
+  },
+  "modal": {
+    "background": "bg-lime-500",
+    "button": "bg-lime-500 hover:bg-lime-600"
+  },
+  "timepicker": {
+    "button": "hover:bg-lime-600",
+    "dropdown": "border-lime-500 bg-lime-600",
+    "confirm": "text-lime-400 bg-lime-500 hover:text-white/90 hover:bg-lime-600"
+  },
+  "planner_scrollable": {
+    "container": "bg-lime-950",
+    "button": "text-lime-700 hover:text-white hover:bg-lime-700",
+    "button_selected": "text-white bg-lime-700",
+    "text": "text-lime-500"
+  },
+  "auth": {
+    "body": "bg-lime-900",
+    "container": "border-lime-700 bg-lime-800",
+    "text": "text-lime-400"
+  },
+  "overview": {
+    "body": "bg-lime-900",
+    "text": "text-lime-500",
+    "container": "border-lime-700 bg-lime-800",
+    "button": "text-lime-500 bg-lime-700 hover:text-white hover:bg-lime-600",
+    "button_selected": "text-white/90 bg-indigo-600 hover:bg-lime-600",
+    "button_zoom": "hover:bg-indigo-700 hover:text-white",
+    "timeline_body": "bg-lime-950 border-lime-700",
+    "timeline_hour": "bg-lime-800 border-lime-700",
+    "timeline_event": "bg-indigo-800",
+    "timeline_event_selected": "bg-amber-800",
+    "event_form_btn": "bg-gradient-to-br from-lime-500 to-lime-600 hover:from-lime-600 hover:to-lime-700",
+    "journal_log": "border-lime-500 bg-lime-700",
+    "journal_log_user": "bg-lime-600",
+    "journal_log_button": "text-lime-500 hover:text-white hover:bg-lime-500",
+    "journal_form_container": "bg-lime-900"
+  }
+}

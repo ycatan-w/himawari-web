@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { IconDelete, IconDropdownDots, IconEdit } from '@/components/ui/icons';
+import { IconDelete, IconEdit } from '@/components/ui/icons';
 import { useJournalBubble } from './useJournalBubble';
-import { inject, ref, toRef, watch } from 'vue';
+import { ref, toRef } from 'vue';
 import type { JournalData } from '@/modules/providers/base-provider';
 import { renderedMarkdown } from '@/utils/utils';
 import { getCurrentUser } from '@/modules/auth';
 import BaseModal from '@/components/common/BaseModal.vue';
+import { useFeatureColorTheme, type Theme } from '@/utils/colorTheme';
 
 const entryToEdit = defineModel<{
   id: number|null
@@ -15,12 +16,10 @@ const props = defineProps<{
   entries: JournalData[]
   newEntry: string
 }>();
-const { themeColors } = inject("journalContext") as {
-  themeColors: string
-};
 const { newEntryBubbleRef, entriesContainerRef, entryToDeleteRef, deleteAction } = useJournalBubble(toRef(props, 'entries'), toRef(props, 'newEntry'));
 const currentUser = getCurrentUser();
 const confirmDeleteOpen = ref(false);
+const { colorPalette, featureColorTheme } = useFeatureColorTheme('overview');
 </script>
 
 <template>
@@ -31,7 +30,7 @@ const confirmDeleteOpen = ref(false);
     :confirm-text="$t('modal.delete.delete')"
     :cancel-text="$t('modal.delete.cancel')"
     @confirm="deleteAction()"
-    :themeColors="themeColors"
+    :themeColors="colorPalette"
   />
 
   <div class="flex-1 overflow-y-auto rounded-t max-h-125" ref="entriesContainerRef">
@@ -39,11 +38,17 @@ const confirmDeleteOpen = ref(false);
       v-for="(entry, i) in entries"
       :key="i"
       :class="[
-        `flex gap-3 items-start py-3 p-2 border-b bubble-${themeColors}`,
+        'flex gap-3 items-start py-3 p-2 border-b',
+        featureColorTheme.journal_log,
         entryToEdit.id === entry.id && 'opacity-60'
       ]"
     >
-      <div :class="`w-10 h-10 rounded-full bubble-user-${themeColors} flex items-center justify-center text-white font-bold uppercase`">
+      <div
+        :class="[
+          'w-10 h-10 rounded-full flex items-center justify-center text-white font-bold uppercase',
+           featureColorTheme.journal_log_user,
+        ]"
+      >
         {{ currentUser?.[0] ?? "U" }}
       </div>
 
@@ -59,7 +64,10 @@ const confirmDeleteOpen = ref(false);
                   entryToEdit.text = (entryToEdit.id === entry.id ? '' : entry.text)
                 ]"
                 type="button"
-                :class="`p-2 cursor-pointer btn-${themeColors}-500`"
+                :class="[
+                  'p-2 cursor-pointer',
+                  featureColorTheme.journal_log_button,
+                ]"
               >
                 <IconEdit />
               </button>
@@ -85,9 +93,17 @@ const confirmDeleteOpen = ref(false);
 
     <div
       v-if="newEntryBubbleRef"
-      :class="`flex gap-3 items-start py-3 p-2 border-b bubble-${themeColors} opacity-60`"
+      :class="[
+        'flex gap-3 items-start py-3 p-2 border-b opacity-60',
+        featureColorTheme.journal_log
+      ]"
     >
-      <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold uppercase">
+      <div
+        :class="[
+          `w-10 h-10 rounded-full flex items-center justify-center text-white font-bold uppercase`,
+          featureColorTheme.journal_log_user,
+        ]"
+      >
         {{ currentUser?.[0] ?? "U" }}
       </div>
 

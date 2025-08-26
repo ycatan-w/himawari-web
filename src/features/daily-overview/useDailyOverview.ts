@@ -1,17 +1,23 @@
-import { ref, watch, type Ref } from "vue";
-import { getRandomTheme, type Theme } from "@/utils/colorTheme";
+import { useFeatureColorTheme, type Theme } from "@/utils/colorTheme";
+import { ref, toValue, watchEffect, type Ref } from "vue";
 
 export function useDailyOverview(isShown: Ref<boolean>) {
   const modes  = ['agenda', 'journal'] as const;
   const modeRef = ref<'agenda' | 'journal'>('agenda');
-  const themeColorsRef = ref<Theme>('amber');
+  const featureColorThemeRef = ref<{colorPalette: Theme, featureColorTheme: any}>(
+    {
+      colorPalette: 'amber',
+      featureColorTheme: {}
+    }
+  );
 
-  watch(isShown, (isShown) => {
-    if (isShown) {
+
+  watchEffect(() => {
+    if (toValue(isShown)) {
       modeRef.value = 'agenda';
-      themeColorsRef.value = getRandomTheme();
+      featureColorThemeRef.value = useFeatureColorTheme('overview', true);
     }
   });
 
-  return { modeRef, themeColorsRef, modes }
+  return { modeRef, featureColorThemeRef, modes }
 }

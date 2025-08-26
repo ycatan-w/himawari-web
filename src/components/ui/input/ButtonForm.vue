@@ -1,22 +1,24 @@
 <script setup lang="ts">
+import { useCommonColorTheme, type Theme } from '@/utils/colorTheme';
 import { useAttrs } from 'vue';
-import { useRoute } from 'vue-router';
 
 const { colorScheme } = defineProps<{
 type?: "button" | "submit" | "reset" | undefined
-colorScheme?: string
+colorScheme: Theme
 label: string
 }>();
 
 const attrs = useAttrs();
-const route = useRoute();
-const colorName = colorScheme || (route.meta.themeValue as string);
+const { button } = useCommonColorTheme(colorScheme, 'form');
 </script>
 
 <template>
   <button
     :type="type || 'button'"
-    :class="`btn-form btn-form-${colorName}`"
+    :class="[
+      'w-full cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center',
+      button
+    ]"
     v-bind="attrs"
   >
     {{ label }}
