@@ -31,7 +31,7 @@ watch(() => props.daysInMonth, () => {
         ]"
         :class="[
           'w-full h-full flex items-center justify-center cursor-pointer',
-          'text-indigo-700 rounded-full hover:text-white hover:bg-indigo-700',
+          'text-indigo-700 rounded-2xl hover:text-white hover:bg-indigo-700',
           dayRef === day && 'text-white bg-indigo-700',
         ]"
       >

@@ -40,7 +40,7 @@ const { container, button, button_selected, text } = useCommonColorTheme(colorTh
         :ref="el => el && (itemRefs[value] = (el as HTMLElement))"
         @click="selected = value"
         :class="[
-          'text-base rounded-full shrink-0 snap-center cursor-pointer',
+          'text-base w-50 rounded-2xl shrink-0 snap-center cursor-pointer',
           btnSize,
           button,
           selected === value && button_selected,
