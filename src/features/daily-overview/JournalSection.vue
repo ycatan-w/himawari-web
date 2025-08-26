@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { provide, ref } from 'vue';
-import JournalBubble from '../journal/JournalBubble.vue';
+import { provide } from 'vue';
+import JournalLog from '../journal/JournalLog.vue';
 import JournalForm from '../journal/JournalForm.vue';
 import { useJournalSection } from './useJournalSection';
 
@@ -20,7 +20,7 @@ const { journalEntriesRef, newEntryRef, entryToEditRef } = useJournalSection(dat
 
 <template>
    <div class="flex flex-col h-full">
-    <JournalBubble
+    <JournalLog
       v-model:entry-to-edit="entryToEditRef"
       :entries="journalEntriesRef"
       :new-entry="newEntryRef"

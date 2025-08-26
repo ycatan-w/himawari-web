@@ -54,14 +54,20 @@ const confirmDeleteOpen = ref(false);
 
           <div class="flex items-center space-x-1 ml-auto text-xs">
               <button
-                @click="entryToEdit.id = (entryToEdit.id === entry.id ? null: entry.id); entryToEdit.text = (entryToEdit.id === entry.id ? '' : entry.text);"
+                @click="[
+                  entryToEdit.id = (entryToEdit.id === entry.id ? null: entry.id),
+                  entryToEdit.text = (entryToEdit.id === entry.id ? '' : entry.text)
+                ]"
                 type="button"
                 :class="`p-2 cursor-pointer btn-${themeColors}-500`"
               >
                 <IconEdit />
               </button>
               <button
-                @click="confirmDeleteOpen = true; entryToDeleteRef = entry.id;"
+                @click="[
+                  confirmDeleteOpen = true,
+                  entryToDeleteRef = entry.id
+                ]"
                 type="button"
                 :class="`p-2 cursor-pointer text-red-500 hover:text-white hover:bg-red-500`"
               >

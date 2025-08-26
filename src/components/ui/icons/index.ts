@@ -16,3 +16,4 @@ export { default as IconEmoji } from '@/components/ui/icons/IconEmoji.vue';
 export { default as IconList } from '@/components/ui/icons/IconList.vue';
 export { default as IconHead } from '@/components/ui/icons/IconHead.vue';
 export { default as IconPublish } from '@/components/ui/icons/IconPublish.vue';
+export { default as IconEventFlow } from '@/components/ui/icons/IconEventFlow.vue';

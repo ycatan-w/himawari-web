@@ -17,7 +17,7 @@ const selectedDate = computed(() => new Date(yearRef.value, monthRef.value, dayR
 </script>
 
 <template>
-  <div class="h-screen w-screen flex flex-col text-white">
+  <div class="h-full w-full flex flex-col text-white">
     <YearGrid v-model="yearRef" :current-year="currentYear" :years="years" />
     <MonthGrid v-model="monthRef" :current-month="currentMonth" :months="months" />
     <DayGrid v-model:day-ref="dayRef" v-model:show-overview="showOverview" :current-day="currentDay" :days-in-month="daysInMonth" />
