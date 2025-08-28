@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import { getProvider } from '@/modules/providers';
-import type { EventData } from '@/modules/providers/base-provider';
+import type { EventData, JournalData } from '@/modules/providers/base-provider';
 import { computed, onMounted, ref } from 'vue';
+import EventPreview from '../events/EventPreview.vue';
+import JournalPreview from '../journal/JournalPreview.vue';
+import { useFeatureColorTheme, type Theme } from '@/utils/colorTheme';
 
 
 const provider = getProvider();
 const events = ref<EventData[]>([]);
+const journals = ref<JournalData[]| null>([]);
+const featureColorTheme = ref<any>({});
+const colorPalette = ref<Theme>('amber');
 
 const sortedEvents = computed(() => {
   let currentTime: number|null = null;
@@ -26,33 +32,55 @@ onMounted(() => {
   .then(data => {
     events.value = data;
   });
+  provider.getJournal(dateStr)
+  .then(data => {
+    journals.value = data;
+  });
+  const featureColor = useFeatureColorTheme('event_flow', true);
+  featureColorTheme.value = featureColor.featureColorTheme;
+  colorPalette.value = featureColor.colorPalette;
 });
-
-function minutesToTimeFormatter(minutes: number): string {
-  const h = Math.floor(minutes / 60)
-  const m = minutes % 60
-  const pad = (n: number) => n.toString().padStart(2, '0')
-  return `${pad(h)}:${pad(m)}`
-}
 </script>
 
 <template>
-  <div class="relative flex flex-col h-full w-full overflow-y-auto">
-    <h2 class="ml-10 text-xl font-semibold relative pl-2">Your Plan today</h2>
-    <!-- Ligne temporelle -->
-    <div class="absolute left-4 top-0 bottom-0 w-[2px] bg-gradient-to-b from-amber-400/80 via-amber-600/50 to-amber-400/80"></div>
-
-    <!-- Prévisualisation -->
+  <div class="flex flex-col h-screen w-full p-4 gap-4">
+    <h2 class="flex items-center text-xl font-semibold border-l-4 pl-2">
+        <span class="flex-1">{{ $d(new Date(), {dateStyle: 'full'}) }}</span>
+      </h2>
+    <h2 class="text-base font-semibold ">{{ $t('flow.event') }}</h2>
     <div
-      v-for="(e, index) in sortedEvents"
-      :key="index"
-      class="ml-10 mb-2 mr-2 p-4 rounded-2xl bg-neutral-800/70 shadow-md backdrop-blur-sm relative"
+      :class="[
+        'flex-1 overflow-y-auto border-l-2 pl-6',
+        featureColorTheme.flux
+      ]"
     >
-      <h3 class="text-sm font-semibold text-amber-300">
-        {{ e.title }}
-      </h3>
-      <div class="text-xs text-white/70 max-w-none mt-2 italic">{{ minutesToTimeFormatter(e.start) }} - {{ minutesToTimeFormatter(e.end) }}</div>
-      <span v-if="e.rounded" class="absolute left-[-1.2rem] top-6 w-3 h-3 rounded-full bg-amber-400 shadow-md"></span>
+      <div
+        v-for="(e, index) in sortedEvents"
+        :key="index"
+        class="mb-6 relative"
+      >
+        <span
+          :class="[
+            'absolute -left-5 top-2 w-3 h-3 rounded-full shadow-md',
+            featureColorTheme.bullet
+          ]"
+          v-if="e.rounded"
+        ></span>
+
+        <EventPreview
+          :event="e"
+          :color-palette="colorPalette"
+          :hide-description="true"
+          title-size="text-xs"
+        />
+      </div>
+    </div>
+
+    <h3 class="text-base font-semibold">{{ $t('flow.journal') }}</h3>
+    <div class="flex-1 overflow-y-auto flex flex-col gap-3">
+      <div v-for="(j, index) in journals" :key="index">
+        <JournalPreview :journal="j" :color-palette="colorPalette" />
+      </div>
     </div>
   </div>
 </template>

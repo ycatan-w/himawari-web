@@ -52,5 +52,9 @@
     "journal_log_button": "hover:text-white hover:bg-amber-700/80",
     "journal_form_container": "bg-indigo-900",
     "journal_prose": "prose-indigo"
+  },
+  "event_flow": {
+    "flux": "border-indigo-400/50",
+    "bullet": "bg-indigo-400"
   }
 }

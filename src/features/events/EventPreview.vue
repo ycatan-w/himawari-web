@@ -6,6 +6,8 @@ import { minutesToTime } from '@/utils/timeHelper';
 const props = defineProps<{
   event: EventData
   colorPalette: Theme
+  hideDescription?: boolean
+  titleSize?: string
 }>();
 
 const { background, dot } = useCommonColorTheme(props.colorPalette, 'event_preview');
@@ -25,14 +27,19 @@ const { background, dot } = useCommonColorTheme(props.colorPalette, 'event_previ
           dot
         ]"
       />
-      <h3 class="font-semibold text-base">{{ event.title }}</h3>
+      <h3
+        :class="[
+          'font-semibold',
+          titleSize || 'text-base'
+        ]"
+      >{{ event.title }}</h3>
       •
       <p class="mt-1 text-xs italic text-white/50">
         {{ minutesToTime(event.start) }} - {{ minutesToTime(event.end) }}
       </p>
     </div>
 
-    <p class="mt-2 text-sm line-clamp-2 text-white/60">
+    <p v-if="!hideDescription" class="mt-2 text-sm line-clamp-2 text-white/60">
       {{ event.description }}
     </p>
   </div>

@@ -3,7 +3,7 @@ import { IconEventFlow, IconLogout, IconRefresh } from '@/components/ui/icons'
 import { PlannerView } from '@/features/planner';
 import { useDashboard } from './useDashboard';
 import type { LocalStorageProvider } from '@/modules/providers/local-storage-provider';
-import { ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { getProvider, getProviderMode } from '@/modules/providers';
 import EventFlow from './EventFlow.vue';
 import Toast from '@/components/common/Toast.vue';
@@ -20,7 +20,23 @@ function resetDataAction() {
 }
 const toastRef = ref<InstanceType<typeof Toast> | null>(null);
 const showSidebar = ref(false);
+const sidebarRef = ref<HTMLElement | null>(null);
 const colors = 'text-amber-700 hover:text-white hover:bg-amber-700';
+
+function handleClickOutside(event: MouseEvent) {
+  if (!sidebarRef.value) return;
+  if (!sidebarRef.value.contains(event.target as Node)) {
+    showSidebar.value = false;
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside);
+});
 </script>
 
 <template>
@@ -65,7 +81,7 @@ const colors = 'text-amber-700 hover:text-white hover:bg-amber-700';
       <PlannerView />
       <button
         class="cursor-pointer z-25 fixed bottom-1 right-1 p-3 rounded-full bg-amber-600 hover:bg-amber-500"
-        @click="showSidebar = !showSidebar"
+        @click.stop="showSidebar = !showSidebar"
       >
         <IconEventFlow />
       </button>
@@ -73,9 +89,8 @@ const colors = 'text-amber-700 hover:text-white hover:bg-amber-700';
     <transition name="slide">
       <aside
         v-if="showSidebar"
-        :class="[
-          'fixed top-0 right-0 h-full w-80 bg-gray-900 border-l border-gray-700 shadow-lg'
-        ]"
+        ref="sidebarRef"
+        class="fixed top-0 right-0 h-full w-100 bg-gray-900 border-l border-gray-700 shadow-lg"
       >
         <EventFlow />
       </aside>

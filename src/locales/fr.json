@@ -75,5 +75,9 @@
       "cancel": "Annuler",
       "delete": "Supprimer"
     }
+  },
+  "flow": {
+    "event": "À faire aujourd'hui",
+    "journal": "Réflexions"
   }
 }

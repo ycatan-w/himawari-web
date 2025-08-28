@@ -5,7 +5,6 @@ import { ref, toRef } from 'vue';
 import type { JournalData } from '@/modules/providers/base-provider';
 import { renderedMarkdown } from '@/utils/utils';
 import { getCurrentUser } from '@/modules/auth';
-// import BaseModal from '@/components/common/BaseModal.vue';
 import { useFeatureColorTheme, type Theme } from '@/utils/colorTheme';
 import ConfirmDeleteModal from '@/components/common/ConfirmDeleteModal.vue';
 import JournalPreview from './JournalPreview.vue';
@@ -76,7 +75,7 @@ const { colorPalette, featureColorTheme } = useFeatureColorTheme('overview');
                 @click="[
                   confirmDeleteOpen = true,
                   entryToDeleteRef = entry.id,
-                  selectedJournal = entry
+                  selectedJournal = entry,
                 ]"
                 type="button"
                 :class="`p-2 cursor-pointer hover:text-white/80 hover:bg-red-700/80`"
@@ -131,20 +130,6 @@ const { colorPalette, featureColorTheme } = useFeatureColorTheme('overview');
       </div>
     </div>
   </div>
-  <!-- <div
-    :class="[
-      'flex items-center p-2 mb-2 border-t-4',
-      'text-blue-800 border-blue-300 bg-blue-50 dark:text-blue-400 dark:bg-gray-800 dark:border-blue-800'
-    ]"
-  >
-    <button type="button" class="relative cursor-pointer p-1">
-      <IconCircleCloseOutline class="absolute inset-0 transition-opacity duration-200 opacity-100 hover:opacity-0" />
-      <IconCircleCloseSolid class="text-white/80 absolute inset-0 transition-opacity duration-200 opacity-0 hover:opacity-100" />
-    </button>
-    <div class="ms-3 text-sm font-medium">
-      A simple info alert with an <a href="#" class="font-semibold underline hover:no-underline">example link</a>. Give it a click if you like.
-    </div>
-</div> -->
 </template>
 
 <style lang="css" scoped>

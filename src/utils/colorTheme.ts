@@ -13,10 +13,7 @@ const getRandomColorPalette = (): Theme => {
 const featureThemes: Record<string, Theme> = {};
 export function useFeatureColorTheme(feature: string, reset: boolean = false) {
   if (!featureThemes[feature] || reset) {
-    // featureThemes[feature] = getRandomColorPalette();
-    // featureThemes[feature] = 'amber';
-    // featureThemes[feature] = 'indigo';
-    featureThemes[feature] = 'lime';
+    featureThemes[feature] = getRandomColorPalette();
   }
 
   return {

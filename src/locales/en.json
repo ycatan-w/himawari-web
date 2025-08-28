@@ -75,5 +75,9 @@
       "cancel": "Cancel",
       "delete": "Delete"
     }
+  },
+  "flow": {
+    "event": "Things to Do Today",
+    "journal": "Reflections"
   }
 }

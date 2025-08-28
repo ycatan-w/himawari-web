@@ -71,7 +71,7 @@ const { featureColorTheme } = useFeatureColorTheme('overview');
             <IconCancel /> <span class="ms-1">{{ $t('modal.delete.cancel') }}</span>
           </button>
 
-          <ButtonForm class="px-5 w-auto text-red-700/80">
+          <ButtonForm @click=confirm() class="px-5 w-auto text-red-700/80">
             {{ $t('modal.delete.delete') }}
           </ButtonForm>
         </div>
