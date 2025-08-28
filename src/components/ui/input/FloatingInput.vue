@@ -24,7 +24,7 @@ const computedLabelClass = computed(() => {
 </script>
 
 <template>
-  <div class="relative  z-0">
+  <div class="relative z-0">
     <input
       v-model="modelValue"
       :id="id"
@@ -34,18 +34,19 @@ const computedLabelClass = computed(() => {
       v-bind="attrs"
       :class="[
         computedInputClass,
-        error ?? inputErrorClass
+        error && inputErrorClass
       ]"
     />
     <label
       :for="id"
       :class="[
+        'cursor-text',
         computedLabelClass,
-        error ?? labelErrorClass
+        error && labelErrorClass
       ]"
     >
       {{ label }}
     </label>
   </div>
-  <p v-if="error && errorMsg" class="mt-2 text-xs text-white/80">{{ errorMsg }}</p>
+  <p v-if="error && errorMsg" class="mt-2 text-sm text-white/80">{{ errorMsg }}</p>
 </template>

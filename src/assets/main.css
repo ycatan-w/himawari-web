@@ -1,2 +1,5 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@import "./prose-amber.css";
+@import "./prose-indigo.css";
+@import "./prose-lime.css";

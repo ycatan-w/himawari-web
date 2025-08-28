@@ -72,18 +72,11 @@ export function useTimeline(selectedEventId: ModelRef<number>, rawEventsRef: Ref
     selectedEventId.value = 0;
   }
 
-  function minutesToTimeFormatter(minutes: number): string {
-    const h = Math.floor(minutes / 60)
-    const m = minutes % 60
-    const pad = (n: number) => n.toString().padStart(2, '0')
-    return `${pad(h)}:${pad(m)}`
-  }
-
   onMounted(async () => {
     if (timelineRef.value) {
       timelineWidth.value = timelineRef.value.clientWidth;
     }
   });
 
-  return { computedPositionedEvents, computedGhostPosition, selectEventAction, handleTimelineClickAction, minutesToTimeFormatter };
+  return { computedPositionedEvents, computedGhostPosition, selectEventAction, handleTimelineClickAction };
 }

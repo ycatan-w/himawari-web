@@ -3,39 +3,22 @@ import { IconZoomIn, IconZoomOut } from '@/components/ui/icons';
 import { EventForm, Timeline } from '@/features/events';
 import { useTimelineSection } from './useTimelineSection';
 import { useFeatureColorTheme } from '@/utils/colorTheme';
+import ZoomButton from './ZoomButton.vue';
 
-const props = defineProps<{ date: Date, themeColors: string }>();
+const props = defineProps<{ date: Date }>();
 const dateStr = props.date.toISOString().split('T')[0];
-const { selectedEventIdRef, newEventStartRef, scaleFactorRef, rawEventsRef, zoomInAction, zoomOutAction } = useTimelineSection(dateStr);
+const { selectedEventIdRef, newEventStartRef, scaleFactorRef, rawEventsRef } = useTimelineSection(dateStr);
 const { featureColorTheme } = useFeatureColorTheme('overview');
 </script>
 
 <template>
-  <div class="flex items-start">
-    <div class="w-25 h-50 rounded-tl shrink-0 text-xs sm:text-sm md:text-lg">
-      <div class="sticky top-0 z-20 py-1 flex flex-col items-center">
-        <div class="font-semibold text-shadow-sm">{{ $t('label.hours') }}</div>
-        <div class="flex gap-1 p-0 bg-black/30 w-19 rounded-full backdrop-blur-sm ml-0">
-          <button
-            @click="zoomInAction"
-            :class="[
-              'text-xl w-9 h-9 flex items-center justify-center rounded-full transition cursor-pointer',
-              featureColorTheme.button_zoom
-            ]"
-          >
-            <IconZoomIn />
-          </button>
-          <button
-            @click="zoomOutAction"
-            :class="[
-              'text-xl w-9 h-9 flex items-center justify-center rounded-full transition cursor-pointer',
-              featureColorTheme.button_zoom
-            ]"
-          >
-            <IconZoomOut />
-          </button>
-        </div>
-      </div>
+  <div>
+    <div class="mb-3">
+      <h2 class="flex items-center text-xl font-semibold border-l-4 pl-2">
+        <span class="flex-1">{{ $t('label.hours') }}</span>
+        <!-- <span>{{ scaleFactorRef*100 }}%</span> -->
+        <ZoomButton v-model="scaleFactorRef" />
+      </h2>
     </div>
 
     <Timeline

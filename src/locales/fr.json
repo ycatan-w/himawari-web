@@ -30,7 +30,9 @@
     "new_event": "Planifier un nouvel événement",
     "edit_event": "Mettre à jour l'événement",
     "journal_preview": "Aperçu",
-    "journal_write": "Écrivez votre journal"
+    "journal_write": "Qu'avez-vous en tête ?",
+    "notes": "Pensées et idées",
+    "journal_edit": "Mettre à jour la pensée"
   },
   "button": {
     "signIn": "Se connecter",
@@ -38,7 +40,8 @@
     "cancel": "Annuler",
     "confirm": "Confirmer",
     "event_save": "Enregistrer",
-    "event_cancel": "Annuler les modifications",
+    "event_cancel": "Ignorer les changements",
+    "event_reset": "Repartir à zéro",
     "event_delete": "Supprimer",
     "journal_publish": "Envoyer"
   },
@@ -65,9 +68,10 @@
   },
   "modal": {
     "delete": {
-      "title": "Confirmer la suppression",
-      "message": "Êtes-vous sûr de vouloir supprimer cet événement ?",
-      "message_journal": "Êtes-vous sûr de vouloir supprimer cet note ?",
+      "title_event": "Supprimer l'événement",
+      "title_journal": "Supprimer une pensée",
+      "message_event": "Voulez-vous vraiment supprimer cet événement ? Cette action est définitive.",
+      "message_journal": "Voulez-vous vraiment supprimer cette pensée ? Vous ne pourrez pas revenir en arrière.",
       "cancel": "Annuler",
       "delete": "Supprimer"
     }

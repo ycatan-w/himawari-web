@@ -1,47 +1,55 @@
 {
   "form": {
-    "input_filled": "text-amber-200 bg-amber-900 border-amber-300 focus:border-lime-600",
-    "textarea_filled": "bg-amber-900 text-amber-200 border-amber-300 focus:border-lime-600",
-    "label_filled": "bg-amber-900 text-amber-500 peer-focus:text-lime-600",
-    "button": "hover:text-amber-500 bg-amber-600 hover:bg-amber-700 focus:ring-amber-800",
-    "input_standard": "text-amber-200 border-amber-300 focus:border-lime-600",
-    "textarea_standard": "text-amber-200 border-amber-300 focus:border-lime-600",
-    "label_standard": "text-amber-500 peer-focus:text-lime-600"
+    "input_filled": "bg-amber-900/40 focus:border-lime-600 focus:text-white/80",
+    "label_filled": "peer-focus:text-lime-600",
+    "input_standard": "focus:border-lime-600 focus:text-white/80",
+    "label_standard": "peer-focus:text-lime-600"
   },
   "modal": {
     "background": "bg-amber-500",
     "button": "bg-amber-500 hover:bg-amber-600"
   },
   "timepicker": {
-    "button": "hover:bg-amber-600",
-    "dropdown": "border-amber-500 bg-amber-600",
-    "confirm": "text-amber-400 bg-amber-500 hover:text-white/90 hover:bg-amber-600"
+    "button": "hover:bg-amber-900",
+    "dropdown": "border-amber-900 bg-amber-900",
+    "confirm": "bg-amber-950/80 hover:text-white/80 hover:bg-amber-950/50"
   },
   "planner_scrollable": {
     "container": "bg-amber-950",
     "button": "text-amber-700 hover:text-white hover:bg-amber-700",
     "button_selected": "text-white bg-amber-700",
-    "text": "text-amber-400"
+    "text": "text-amber-400/50"
   },
   "auth": {
-    "body": "bg-amber-900",
-    "container": "border-amber-700 bg-amber-800",
-    "text": "text-amber-400"
+    "body": "bg-amber-950 text-amber-400/50",
+    "container": "border-amber-900/30 bg-amber-900/30"
+  },
+  "event_preview": {
+    "background": "bg-amber-950",
+    "dot": "bg-amber-900"
+  },
+  "journal_preview": {
+    "background": "bg-amber-800",
+    "prose": "prose-amber"
   },
   "overview": {
-    "body":"bg-amber-900",
-    "text": "text-amber-400",
+    "body":"bg-amber-950",
+    "text": "text-amber-400/50",
+    "button_round": "hover:bg-lime-700 hover:text-white",
+    "tab_selected": "text-lime-600 border-lime-600",
     "container": "border-amber-700 bg-amber-800",
     "button": "text-amber-400 bg-amber-700 hover:text-white hover:bg-amber-600",
     "button_selected": "text-white/90 bg-lime-600 hover:bg-amber-600",
-    "button_zoom": "hover:bg-lime-700 hover:text-white",
-    "timeline_body": "bg-amber-950 border-amber-700",
-    "timeline_hour": "bg-amber-800 border-amber-700",
-    "timeline_event": "bg-lime-800",
-    "timeline_event_selected": "bg-indigo-800",
-    "journal_log": "border-amber-500 bg-amber-700",
-    "journal_log_user": "bg-amber-600",
-    "journal_log_button": "text-amber-500 hover:text-white hover:bg-amber-500",
-    "journal_form_container": "bg-amber-900"
+    "button_zoom": "hover:bg-lime-700/80 hover:text-white",
+    "timeline_body": "border-amber-800",
+    "timeline_slot": "bg-amber-900 border-amber-800",
+    "timeline_events": "bg-amber-800/50",
+    "timeline_event": "bg-lime-700/80",
+    "timeline_event_selected": "bg-indigo-800/80",
+    "journal_log": "border-amber-800/80 bg-amber-800/50",
+    "journal_log_user": "bg-amber-800/80",
+    "journal_log_button": "hover:text-white/80 hover:bg-lime-700/80",
+    "journal_form_container": "bg-amber-900",
+    "journal_prose": "prose-amber"
   }
 }

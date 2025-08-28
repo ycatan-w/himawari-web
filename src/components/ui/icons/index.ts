@@ -1,6 +1,9 @@
 export { default as IconCalendar } from '@/components/ui/icons/IconCalendar.vue';
+export { default as IconJournal } from '@/components/ui/icons/IconJournal.vue';
 export { default as IconClose } from '@/components/ui/icons/IconClose.vue';
 export { default as IconLogout } from '@/components/ui/icons/IconLogout.vue';
+export { default as IconLogin } from '@/components/ui/icons/IconLogin.vue';
+export { default as IconRegister } from '@/components/ui/icons/IconRegister.vue';
 export { default as IconInfo } from '@/components/ui/icons/IconInfo.vue';
 export { default as IconUp } from '@/components/ui/icons/IconUp.vue';
 export { default as IconDown } from '@/components/ui/icons/IconDown.vue';
@@ -17,3 +20,6 @@ export { default as IconList } from '@/components/ui/icons/IconList.vue';
 export { default as IconHead } from '@/components/ui/icons/IconHead.vue';
 export { default as IconPublish } from '@/components/ui/icons/IconPublish.vue';
 export { default as IconEventFlow } from '@/components/ui/icons/IconEventFlow.vue';
+export { default as IconFlower } from '@/components/ui/icons/IconFlower.vue';
+export { default as IconCircleCloseSolid } from '@/components/ui/icons/IconCircleCloseSolid.vue';
+export { default as IconCircleCloseOutline } from '@/components/ui/icons/IconCircleCloseOutline.vue';

@@ -30,7 +30,9 @@
     "new_event": "Plan Something New",
     "edit_event": "Update Your Plan",
     "journal_preview": "Preview",
-    "journal_write": "Write your journal"
+    "journal_write": "What's on your mind?",
+    "notes": "Thoughts & Ideas",
+    "journal_edit": "Update your thought"
   },
   "button": {
     "signIn": "Sign in",
@@ -38,7 +40,8 @@
     "cancel": "Cancel",
     "confirm": "Confirm",
     "event_save": "Save",
-    "event_cancel": "Cancel event changes",
+    "event_cancel": "Forget changes",
+    "event_reset": "Start fresh",
     "event_delete": "Delete",
     "journal_publish": "Send"
   },
@@ -65,9 +68,10 @@
   },
   "modal": {
     "delete": {
-      "title": "Confirm deletion",
-      "message": "Are you sure you want to delete this event?",
-      "message_journal": "Are you sure you want to delete this note?",
+      "title_event": "Delete Event",
+      "title_journal": "Delete Thought",
+      "message_event": "Are you sure you want to delete this event?  This action cannot be undone.",
+      "message_journal": "Are you sure you want to delete this thought? Once it's gone, its gone.",
       "cancel": "Cancel",
       "delete": "Delete"
     }

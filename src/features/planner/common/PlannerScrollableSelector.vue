@@ -40,10 +40,10 @@ const { container, button, button_selected, text } = useCommonColorTheme(colorTh
         :ref="el => el && (itemRefs[value] = (el as HTMLElement))"
         @click="selected = value"
         :class="[
-          'text-base w-50 rounded-2xl shrink-0 snap-center cursor-pointer',
+          'text-base w-50 rounded-2xl shrink-0 snap-center cursor-pointer hover:opacity-40',
           btnSize,
           button,
-          selected === value && button_selected,
+          selected === value && `${button_selected} opacity-50`,
         ]"
       >
         <span

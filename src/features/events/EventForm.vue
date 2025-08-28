@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { reactive, ref, toRef, watch } from 'vue';
 import TimePicker from '@/components/ui/form/TimePicker.vue';
-import { FloatingInputStandard } from '@/components/ui/input';
-import { IconCancel, IconDelete, IconClock } from '@/components/ui/icons';
+import { FloatingInputStandard, SubmitButton } from '@/components/ui/input';
+import { IconCancel, IconDelete, IconClock, IconRefresh } from '@/components/ui/icons';
 import type { EventData } from '@/modules/providers/base-provider';
 import { useEventForm } from './useEventForm';
-import BaseModal from '@/components/common/BaseModal.vue';
 import { useCommonColorTheme, useFeatureColorTheme } from '@/utils/colorTheme';
+import ConfirmDeleteModal from '@/components/common/ConfirmDeleteModal.vue';
+import EventPreview from './EventPreview.vue';
 
 const selectedEventId = defineModel<number>('selectedEventId', {default: 0});
 const draftStart = defineModel<number | null>('draftStart', {default: null})
@@ -15,23 +16,23 @@ const props = defineProps<{
   date: Date
   rawEvents: EventData[]
 }>();
-const { form, isEdition, addAction, editAction, deleteAction } = useEventForm(props.date, selectedEventId, toRef(props, 'rawEvents'), draftStart);
+const { form, selectedEvent, isEdition, addAction, editAction, deleteAction } = useEventForm(props.date, selectedEventId, toRef(props, 'rawEvents'), draftStart);
 const confirmDeleteOpen = ref(false);
 const { colorPalette, featureColorTheme } = useFeatureColorTheme('overview');
 const formColor = useCommonColorTheme(colorPalette, 'form');
 </script>
 
 <template>
-  <BaseModal
-    v-model:open="confirmDeleteOpen"
-    :title="$t('modal.delete.title')"
-    :message="$t('modal.delete.message')"
-    :confirm-text="$t('modal.delete.delete')"
-    :cancel-text="$t('modal.delete.cancel')"
+  <ConfirmDeleteModal
+    v-model="confirmDeleteOpen"
+    :title="$t('modal.delete.title_event')"
+    :message="$t('modal.delete.message_event')"
     @confirm="deleteAction(selectedEventId)"
-    :themeColors="colorPalette"
-  />
-  <form class="relative w-full rounded-b shadow p-4 space-y-6">
+  >
+    <EventPreview :event="selectedEvent" :color-palette="colorPalette" />
+  </ConfirmDeleteModal>
+
+  <form class="relative w-full rounded-b shadow mt-3 space-y-6">
     <div class="flex items-center gap-1">
       <h2 class="text-xl font-semibold relative border-l-4 pl-2">
         {{ isEdition() ? $t('label.edit_event') : $t('label.new_event') }}
@@ -102,25 +103,21 @@ const formColor = useCommonColorTheme(colorPalette, 'form');
     </div>
 
       <div class="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-end">
-        <div class="flex flex-col-reverse gap-2 sm:flex-row sm:gap-3 w-full sm:w-auto">
+        <div class="flex flex-col-reverse gap-4 sm:flex-row sm:gap-3 w-full sm:w-auto">
           <button
-            v-if="isEdition()"
             type="button"
-            @click="selectedEventId = 0"
-            class="text-sm font-medium text-white inline-flex items-right text-center underline-offset-4 hover:underline transition-colors sm:self-center cursor-pointer"
+            @click="isEdition() ? selectedEventId = 0 : draftStart = null"
+            class="text-sm font-medium text-white/80 inline-flex items-right text-center underline-offset-4 hover:underline transition-colors sm:self-center cursor-pointer"
           >
-            <IconCancel /> <span class="ms-1">{{ $t('button.event_cancel') }}</span>
+              <IconCancel v-if="isEdition()" /> <span class="ms-1" v-if="isEdition()">{{ $t('button.event_cancel') }}</span>
+              <IconRefresh v-if="!isEdition()"  /> <span class="ms-1" v-if="!isEdition()">{{ $t('button.event_reset') }}</span>
           </button>
-          <button
-            type="submit"
+          <SubmitButton
             @click.prevent="(isEdition()) ? editAction(selectedEventId) : addAction()"
-            :class="[
-              'w-full sm:w-auto px-5 py-2 rounded-lg font-semibold shadow-md hover:shadow-lg hover:-translate-y-[1px] transition-all duration-300 ease-out cursor-pointer',
-              featureColorTheme.button,
-            ]"
+            class="px-15"
           >
             {{ $t('button.event_save') }}
-          </button>
+          </SubmitButton>
         </div>
       </div>
   </form>

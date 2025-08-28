@@ -1,6 +1,7 @@
-import { reactive, toValue, watch, type ModelRef, type Ref } from "vue";
+import { reactive, ref, toValue, watch, type ModelRef, type Ref } from "vue";
 import type { EventData } from "@/modules/providers/base-provider";
 import { getProvider } from '@/modules/providers'
+import { minutesToTime, timeToMinutes } from "@/utils/timeHelper";
 
 export function useEventForm(date: Date, selectedEventId: ModelRef<number>, rawEvents: Ref<EventData[]>, draftStart: Ref<number | null>) {
   const provider = getProvider();
@@ -20,18 +21,9 @@ export function useEventForm(date: Date, selectedEventId: ModelRef<number>, rawE
     form.title = '';
     form.description = '';
   }
-
-  function minutesToTime(minutes: number): string {
-    const h = Math.floor(minutes / 60)
-    const m = minutes % 60
-    const pad = (n: number) => n.toString().padStart(2, '0')
-    return `${pad(h)}:${pad(m)}`
-  }
-  function timeToMinutes(time: string) {
-    const [h, m] = time.split(':').map(Number)
-    return h * 60 + (m ?? 0);
-  }
+  const selectedEvent = ref<any>(null);
   const isEdition = () => toValue(selectedEventId) !== 0;
+
   async function deleteAction(eventId: number) {
     const eventIndex = toValue(rawEvents).findIndex(event => event.id === eventId);
     if (eventIndex < 0) {
@@ -92,6 +84,7 @@ export function useEventForm(date: Date, selectedEventId: ModelRef<number>, rawE
 
   watch(() => toValue(selectedEventId), () => {
    resetForm();
+   selectedEvent.value = null;
 
     if (!isEdition()) {
       return ;
@@ -100,6 +93,7 @@ export function useEventForm(date: Date, selectedEventId: ModelRef<number>, rawE
     if (!event) {
       return ;
     }
+    selectedEvent.value = event;
     draftStart.value = null;
     form.start = minutesToTime(event.start);
     form.end = minutesToTime(event.end);
@@ -111,8 +105,10 @@ export function useEventForm(date: Date, selectedEventId: ModelRef<number>, rawE
     if (val !== null) {
       form.start = minutesToTime(val);
       form.end = minutesToTime(val + 30);
+    } else if (!toValue(selectedEventId)) {
+      resetForm();
     }
   })
 
-  return { form, isEdition, addAction, editAction, deleteAction };
+  return { form, selectedEvent, isEdition, addAction, editAction, deleteAction };
 }

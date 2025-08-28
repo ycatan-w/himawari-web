@@ -9,16 +9,9 @@ export function useTimelineSection(dateStr: string) {
   const scaleFactorRef = ref(1);
   const provider = getProvider();
 
-  const zoomInAction = () => {
-    scaleFactorRef.value = Math.min(scaleFactorRef.value + 0.25, 24);
-  }
-  const zoomOutAction = () => {
-    scaleFactorRef.value = Math.max(scaleFactorRef.value - 0.25, 1);
-  }
-
   onMounted(async () => {
     rawEventsRef.value = await provider.getEvents(dateStr);
   });
 
-  return { selectedEventIdRef, newEventStartRef, scaleFactorRef, rawEventsRef, zoomInAction, zoomOutAction }
+  return { selectedEventIdRef, newEventStartRef, scaleFactorRef, rawEventsRef }
 }

@@ -21,8 +21,10 @@ watch(
     if (!newClass && !oldClass) {
       return ;
     }
-    document.body.classList.remove(oldClass);
-    document.body.classList.add(newClass);
+    if (oldClass) {
+      document.body.classList.remove(...(oldClass || '').split(' '));
+    }
+    document.body.classList.add(...(newClass || '').split(' '));
   },
   { immediate: true }
 );

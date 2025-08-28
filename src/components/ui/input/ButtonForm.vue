@@ -2,25 +2,30 @@
 import { useCommonColorTheme, type Theme } from '@/utils/colorTheme';
 import { useAttrs } from 'vue';
 
-const { colorScheme } = defineProps<{
+defineProps<{
 type?: "button" | "submit" | "reset" | undefined
-colorScheme: Theme
-label: string
 }>();
 
 const attrs = useAttrs();
-const { button } = useCommonColorTheme(colorScheme, 'form');
 </script>
 
 <template>
   <button
     :type="type || 'button'"
     :class="[
-      'w-full cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center',
-      button
+      'font-semibold group relative',
+      'w-full sm:w-auto cursor-pointer rounded-lg text-md py-2.5',
     ]"
     v-bind="attrs"
   >
-    {{ label }}
+    <span class="relative z-10 group-hover:text-white/80 flex items-center justify-center gap-2">
+      <slot></slot>
+    </span>
+    <span
+      :class="[
+        'absolute left-0 bottom-0 w-full rounded-t-lg h-0.5 transition-all z-0 group-hover:h-full',
+        'bg-[currentColor]'
+      ]"
+      ></span>
   </button>
 </template>

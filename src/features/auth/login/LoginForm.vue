@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { FloatingInputFilled, SubmitButton } from '@/components/ui/input';
-import { IconInfo } from '@/components/ui/icons';
+import { IconInfo, IconLogin } from '@/components/ui/icons';
 import { useLogin } from './useLogin'
 import { useFeatureColorTheme } from '@/utils/colorTheme';
 
@@ -29,10 +29,9 @@ const { colorPalette } = useFeatureColorTheme('auth');
       required
     />
 
-    <SubmitButton
-      :label=" $t('button.signIn')"
-      :color-scheme="colorPalette"
-    />
+    <SubmitButton class="sm:w-full">
+      <IconLogin /> {{ $t('button.signIn') }}
+    </SubmitButton>
   </form>
 
   <div v-if="error" class="fixed inset-x-0 bottom-0 z-50 flex gap-2 mb-0">

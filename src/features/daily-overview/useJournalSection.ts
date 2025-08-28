@@ -14,9 +14,10 @@ export function useJournalSection(dateStr: string) {
   });
   const provider = getProvider();
   onMounted(() => {
-    provider.getJournal(dateStr).then((data) => {
-      journalEntriesRef.value = data || [];
-    });
+    provider.getJournal(dateStr)
+      .then((data) => {
+        journalEntriesRef.value = data || [];
+      });
   });
 
   return { journalEntriesRef, newEntryRef, entryToEditRef };

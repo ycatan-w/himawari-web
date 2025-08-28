@@ -1,23 +1,31 @@
-import { useFeatureColorTheme, type Theme } from "@/utils/colorTheme";
+import { IconCalendar, IconJournal } from "@/components/ui/icons";
+import { useFeatureColorTheme } from "@/utils/colorTheme";
 import { ref, toValue, watchEffect, type Ref } from "vue";
 
 export function useDailyOverview(isShown: Ref<boolean>) {
-  const modes  = ['agenda', 'journal'] as const;
+const modes: {
+  name: 'agenda' | 'journal',
+  icon: typeof IconCalendar | typeof IconJournal
+}[] = [
+  {
+    name: 'agenda',
+    icon: IconCalendar,
+  },
+  {
+    name: 'journal',
+    icon: IconJournal,
+  }
+];
   const modeRef = ref<'agenda' | 'journal'>('agenda');
-  const featureColorThemeRef = ref<{colorPalette: Theme, featureColorTheme: any}>(
-    {
-      colorPalette: 'amber',
-      featureColorTheme: {}
-    }
-  );
-
+  const featureColorTheme = ref<any>({});
 
   watchEffect(() => {
     if (toValue(isShown)) {
       modeRef.value = 'agenda';
-      featureColorThemeRef.value = useFeatureColorTheme('overview', true);
+      const featureColor = useFeatureColorTheme('overview', true);
+      featureColorTheme.value = featureColor.featureColorTheme;
     }
   });
 
-  return { modeRef, featureColorThemeRef, modes }
+  return { modeRef, featureColorTheme, modes }
 }

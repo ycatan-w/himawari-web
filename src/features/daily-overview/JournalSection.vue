@@ -7,7 +7,6 @@ import type { Theme } from '@/utils/colorTheme';
 
 const props = defineProps<{
   date: Date
-  themeColors: Theme
 }>();
 provide("journalContext", {
   date: props.date,
@@ -18,7 +17,13 @@ const { journalEntriesRef, newEntryRef, entryToEditRef } = useJournalSection(dat
 </script>
 
 <template>
-   <div class="flex flex-col h-full">
+  <div class="mb-3">
+      <h2 class="flex items-center text-xl font-semibold border-l-4 pl-2">
+        <span class="flex-1">{{ $t('label.notes') }}</span>
+      </h2>
+    </div>
+
+   <div class="flex flex-col">
     <JournalLog
       v-model:entry-to-edit="entryToEditRef"
       :entries="journalEntriesRef"

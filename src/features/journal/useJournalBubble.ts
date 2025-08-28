@@ -8,6 +8,7 @@ export function useJournalBubble(journalEntries: Ref<JournalData[]>, newEntry: R
   const newEntryBubbleRef = ref('');
   const entryToDeleteRef = ref<number|null>(null);
   const provider = getProvider();
+  const selectedJournal = ref<any>(null);
 
   const deleteAction = () => {
     if (!entryToDeleteRef.value) {
@@ -40,5 +41,5 @@ export function useJournalBubble(journalEntries: Ref<JournalData[]>, newEntry: R
     scrollToBottom();
   });
 
-  return { newEntryBubbleRef, entriesContainerRef, entryToDeleteRef, deleteAction }
+  return { selectedJournal, newEntryBubbleRef, entriesContainerRef, entryToDeleteRef, deleteAction }
 }

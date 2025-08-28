@@ -1,48 +1,56 @@
 {
   "form": {
-    "input_filled": "text-indigo-200 bg-indigo-900 border-indigo-300 focus:border-amber-600",
-    "textarea_filled": "bg-indigo-900 text-indigo-200 border-indigo-300 focus:border-amber-600",
-    "label_filled": "bg-indigo-900 text-indigo-500 peer-focus:text-amber-600",
-    "button": "hover:text-indigo-500 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-800",
-    "input_standard": "text-indigo-200 border-indigo-300 focus:border-amber-600",
-    "textarea_standard": "text-indigo-200 border-indigo-300 focus:border-amber-600",
-    "label_standard": "text-indigo-500 peer-focus:text-amber-600"
+    "input_filled": "bg-indigo-900/40 focus:border-amber-600 focus:text-white/80",
+    "label_filled": "peer-focus:text-amber-600",
+    "input_standard": "focus:border-amber-600 focus:text-white/80",
+    "label_standard": "peer-focus:text-amber-600"
   },
   "modal": {
     "background": "bg-indigo-500",
     "button": "bg-indigo-500 hover:bg-indigo-600"
   },
   "timepicker": {
-    "button": "hover:bg-indigo-600",
-    "dropdown": "border-indigo-500 bg-indigo-600",
-    "confirm": "text-indigo-400 bg-indigo-500 hover:text-white/90 hover:bg-indigo-600"
+    "button": "hover:bg-indigo-900",
+    "dropdown": "border-indigo-900 bg-indigo-900",
+    "confirm": "bg-indigo-950/80 hover:text-white/80 hover:bg-indigo-950/50"
   },
   "planner_scrollable": {
     "container": "bg-indigo-950",
     "button": "text-indigo-700 hover:text-white hover:bg-indigo-700",
     "button_selected": "text-white bg-indigo-700",
-    "text": "text-indigo-400"
+    "text": "text-indigo-400/50"
   },
   "auth": {
-    "body": "bg-indigo-900",
-    "container": "border-indigo-700 bg-indigo-800",
-    "text": "text-indigo-400"
+    "body": "bg-indigo-950 text-indigo-400/50",
+    "container": "border-indigo-900/30 bg-indigo-900/30"
+  },
+  "event_preview": {
+    "background": "bg-indigo-950",
+    "dot": "bg-indigo-900"
+  },
+  "journal_preview": {
+    "background": "bg-indigo-800",
+    "prose": "prose-indigo"
   },
   "overview": {
-    "body": "bg-indigo-900",
-    "text": "text-indigo-400",
+    "body": "bg-indigo-950",
+    "text": "text-indigo-400/50",
+    "button_round": "hover:bg-amber-700 hover:text-white",
+    "tab_selected": "text-amber-600 border-amber-600",
     "container": "border-indigo-700 bg-indigo-800",
     "button": "text-indigo-400 bg-indigo-700 hover:text-white hover:bg-indigo-600",
     "button_selected": "text-white/90 bg-amber-600 hover:bg-indigo-600",
-    "button_zoom": "hover:bg-amber-700 hover:text-white",
-    "timeline_body": "bg-indigo-950 border-indigo-700",
-    "timeline_hour": "bg-indigo-800 border-indigo-700",
-    "timeline_event": "bg-amber-800",
-    "timeline_event_selected": "bg-lime-800",
+    "button_zoom": "hover:bg-amber-800/80 hover:text-white",
+    "timeline_body": "border-indigo-800",
+    "timeline_slot": "bg-indigo-900 border-indigo-800",
+    "timeline_events": "bg-indigo-800/50",
+    "timeline_event": "bg-amber-800/80",
+    "timeline_event_selected": "bg-lime-700/80",
     "event_form_btn": "bg-gradient-to-br from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700",
     "journal_log": "border-indigo-500 bg-indigo-700",
     "journal_log_user": "bg-indigo-600",
-    "journal_log_button": "text-indigo-500 hover:text-white hover:bg-indigo-500",
-    "journal_form_container": "bg-indigo-900"
+    "journal_log_button": "hover:text-white hover:bg-amber-700/80",
+    "journal_form_container": "bg-indigo-900",
+    "journal_prose": "prose-indigo"
   }
 }

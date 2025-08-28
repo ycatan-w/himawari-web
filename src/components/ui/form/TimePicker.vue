@@ -78,7 +78,7 @@ const timepickerColor = useCommonColorTheme(props.themeColors, 'timepicker');
       ref="toggleButtonRef"
       type="button"
       :class="[
-        'px-4 py-2 text-xs md:text-lg cursor-pointer',
+        'px-4 py-2 text-xs md:text-lg cursor-pointer hover:text-white/70',
         timepickerColor.button
       ]"
     >
@@ -103,7 +103,7 @@ const timepickerColor = useCommonColorTheme(props.themeColors, 'timepicker');
         <button
           @click="cancel"
           type="button"
-          class="text-sm text-white/90 hover:underline cursor-pointer"
+          class="text-sm text-white/80 hover:underline cursor-pointer"
         >
           {{ $t('button.cancel') }}
         </button>

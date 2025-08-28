@@ -2,6 +2,7 @@
 import { FloatingInputFilled, SubmitButton } from '@/components/ui/input'
 import { useRegister } from './useRegister';
 import { useFeatureColorTheme } from '@/utils/colorTheme';
+import { IconRegister } from '@/components/ui/icons';
 
 const { form, errors, registerAction } = useRegister();
 const { colorPalette } = useFeatureColorTheme('auth');
@@ -42,9 +43,9 @@ const { colorPalette } = useFeatureColorTheme('auth');
       autocomplete="off"
       required
     />
-    <SubmitButton
-      :label=" $t('button.register')"
-      :color-scheme="colorPalette"
-    />
+
+    <SubmitButton class="sm:w-full">
+      <IconRegister /> {{ $t('button.register') }}
+    </SubmitButton>
   </form>
 </template>

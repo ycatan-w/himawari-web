@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { toRef } from 'vue';
-import { IconCalendar, IconClose } from '@/components/ui/icons';
+import { onMounted, ref, toRef } from 'vue';
+import { IconClose, IconFlower } from '@/components/ui/icons';
 import TimelineSection from './TimelineSection.vue';
 import { useDailyOverview } from './useDailyOverview';
 import JournalSection from './JournalSection.vue';
+import { useFeatureColorTheme } from '@/utils/colorTheme';
 
 const props = defineProps<{
   date: Date
@@ -11,7 +12,7 @@ const props = defineProps<{
   close: () => void
 }>();
 
-const { modeRef, featureColorThemeRef, modes } = useDailyOverview(toRef(props, 'isShown'));
+const { modeRef, featureColorTheme, modes } = useDailyOverview(toRef(props, 'isShown'));
 </script>
 
 <template>
@@ -19,54 +20,48 @@ const { modeRef, featureColorThemeRef, modes } = useDailyOverview(toRef(props, '
     <div v-if="isShown"
       :class="[
         'fixed overflow-auto right-0 top-0 h-full w-full shadow-lg z-50 p-6 flex flex-col',
-        featureColorThemeRef.featureColorTheme.body,
-        featureColorThemeRef.featureColorTheme.text
+        featureColorTheme.body,
+        featureColorTheme.text
       ]"
     >
       <h5 class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold mb-4 inline-flex items-center capitalize">
-        <span class="mr-3"><IconCalendar /></span> {{ $d(date, {dateStyle: 'full'}) }}
+        <span class="mr-3"><IconFlower /></span> {{ $d(date, {dateStyle: 'full'}) }}
       </h5>
-      <div class="fixed top-3 right-28 z-51 flex bg-black/30 rounded-full backdrop-blur-sm">
+      <div class="fixed top-4.5 right-28 z-51 flex bg-black/30 rounded-full backdrop-blur-sm">
         <button
           @click="close()"
           :class="[
             `cursor-pointer text-xl w-9 h-9 flex items-center justify-center rounded-full transition`,
-            featureColorThemeRef.featureColorTheme.button_zoom
+            featureColorTheme.button_round
           ]"
         >
           <IconClose />
         </button>
       </div>
 
-      <div class="relative">
-        <div
-          :class="[
-            'flex flex-col h-full w-full 0 p-4 relative rounded-lg shadow border',
-            featureColorThemeRef.featureColorTheme.container,
-          ]"
-        >
-          <div class="flex justify-between items-center mb-4">
-            <span></span>
-            <div class="space-x-2">
-              <button
-                v-for="mode in modes"
-                :key="mode"
-                @click="modeRef = mode"
+      <div class="border-b">
+          <ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
+            <li
+              v-for="(mode, index) in modes"
+              :key="index"
+              @click="modeRef = mode.name"
+              class="me-2"
+            >
+              <span
                 :class="[
-                  'px-3 py-1 rounded capitalize cursor-pointer',
-                  modeRef === mode ? featureColorThemeRef.featureColorTheme.button_selected : featureColorThemeRef.featureColorTheme.button
+                  'inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg group cursor-pointer',
+                  modeRef === mode.name ? featureColorTheme.tab_selected : 'border-transparent hover:text-white/70 hover:border-white/70'
                 ]"
               >
-                {{ $t(mode) }}
-              </button>
-            </div>
-          </div>
-
-          <div class="flex-1">
-            <TimelineSection v-if="modeRef === 'agenda'" :date="date" :theme-colors="featureColorThemeRef.colorPalette" />
-            <JournalSection v-else :date="date" :theme-colors="featureColorThemeRef.colorPalette" />
-          </div>
-        </div>
+                <component :is="mode.icon" class="me-2" />
+                {{ $t(mode.name) }}
+              </span>
+            </li>
+          </ul>
+      </div>
+      <div class="flex-1 mt-3">
+        <TimelineSection v-if="modeRef === 'agenda'" :date="date" />
+        <JournalSection v-else :date="date" />
       </div>
     </div>
   </transition>
