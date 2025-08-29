@@ -1,111 +1,108 @@
-# 🌻 Himawari - The Journal
+# 🌻 Himawari Web
 
-_**Plan your days, keep your memories — all in one place.**_
+Himawari Web is the **frontend application** of the Himawari project — a personal **journal, planner, and daily overview tool**.
+It provides a clean and structured interface to help users **log their thoughts, plan their days, and visualize their schedule**.
 
-A modern agenda and journal application built with **Vue 3.5**, **TypeScript**, and **TailwindCSS**.
-It allows you to create, edit, and delete events through an **interactive timeline** and supports multiple languages with persistent selection in the browser.
-
----
-
-## 🚀 Live Demo
-
-🔗 [View Demo](https://ycatan-w.github.io/himawari-web/)
+This web client is designed to integrate with the future **Himawari backend (API/desktop)** for full synchronization and extended features.
 
 ---
 
 ## ✨ Features
 
-- 📌 **Event Management**
-  - Create, edit, and delete events.
-  - Automatically positioned on a daily timeline.
-  - Handles overlapping events.
+* 🔐 **Authentication**: login & register views
+* 📓 **Journal**:
 
-- 🌍 **Multi-language Support**
-  - English 🇬🇧 and French 🇫🇷 included.
-  - Persistent language choice using `localStorage`.
-  - Easily extendable for more languages.
+  * Create and preview journal entries
+  * Daily logs with structured forms
+* 📅 **Daily Overview**:
 
-- 🔄 **Data Providers**
-  - **API Provider**: Fetches and updates data from a backend.
-  - **Local Provider**: Stores and retrieves data from `localStorage` (offline or demo mode).
-  - Preloaded sample data for quick testing.
+  * Timeline and zoomable sections
+  * Journal integration within daily view
+* 📆 **Planner**:
 
-- 🎨 **Modern UI**
-  - Built with TailwindCSS for responsive design.
-  - Zoom in/out on the timeline.
-  - Visual selection highlighting for events.
+  * Year, month, and day grids
+  * Navigation between time scales
+* 🌍 **Multi-language support** (English, French out of the box)
+
+---
+
+## 🌐 Demo
+
+You can try a live demo here:
+👉 [https://ycatan-w.github.io/himawari-web/](https://ycatan-w.github.io/himawari-web/)
+
+**Demo credentials**:
+
+* **Username**: `demo`
+* **Password**: `demo`
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+* [Node.js](https://nodejs.org/) (>= 18 recommended)
+* [pnpm](https://pnpm.io/) or [npm](https://www.npmjs.com/)
+
+### Installation
+
+```bash
+# Clone repository
+git clone https://github.com/your-org/himawari-web.git
+cd himawari-web
+
+# Install dependencies
+pnpm install   # or npm install
+```
+
+### Development
+
+```bash
+# Start dev server
+pnpm dev   # or npm run dev
+```
+
+This will start a Vite-powered dev server and open the app in your browser.
+
+### Build for Production
+
+```bash
+pnpm build   # or npm run build
+```
+
+The production-ready files will be available in the `dist/` folder.
+
+---
+
+## 📂 Project Structure
+
+```bash
+src/
+ ├─ App.vue              # Root component
+ ├─ main.ts              # App entry point
+ ├─ router.ts            # Vue Router configuration
+ ├─ locales/             # i18n (EN/FR JSON translations)
+ ├─ features/            # Core app features
+ │   ├─ auth/            # Authentication views & composables
+ │   ├─ journal/         # Journal components & hooks
+ │   ├─ daily-overview/  # Timeline & overview
+ │   └─ planner/         # Year/Month/Day planner views
+```
+
+---
+
+## 🔗 Future Integration
+
+This web frontend is part of the **Himawari ecosystem**:
+
+* **Web**: main UI (this repo)
+* **Backend API**: upcoming REST/GraphQL API to persist data
+* **Desktop**: cross-platform desktop client (planned)
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Vue 3.5** + `<script setup>`
-- **TypeScript**
-- **TailwindCSS**
-- **vue-i18n** (internationalization)
-- **LocalStorage** (local persistence)
-- **Provider Pattern** (data source abstraction)
-
----
-
-## 📦 Installation & Setup
-
-### 1️⃣ Clone the project
-```bash
-git clone https://github.com/ycatan-w/himawari-web.git
-cd himawari-web
-````
-
-### 2️⃣ Install dependencies
-
-```bash
-npm install
-```
-
-### 3️⃣ Run in development mode
-
-```bash
-npm run dev
-```
-
-### 4️⃣ Build for production
-
-```bash
-npm run build
-```
-
----
-
-## 🗂️ Project Structure
-
-```
-index,html             # Web page entry point
-src/
-├─ assets/             # Image & style contents
-├─ components/         # UI components
-|  ├─ calendar
-|  ├─ ui
-|     ├─ forn
-|     ├─ icons
-|     └─ input
-├─ locals/.            # translation messages
-├─ modules/
-│  ├─ providers/       # API & LocalStorage providers
-│  ├─ lang.ts          # Centralized i18n config
-│  ├─ auth.ts          # Auth
-├─ utils/              # App helpers
-├─ views/              # Main pages
-│  ├─ auth/            # Main pages
-│  ├─ calendar/        # Main pages
-├─ main.ts             # App entry point
-├─ rounter.ts          # App route definition
-└─ App.vue             # Root component
-```
-
----
-
-## 🌍 Language Management
-
-* Centralized language list (`modules/lang.ts`).
-* Default language detected from `navigator.language`.
-* Language preference stored in `localStorage` after selection.
+* [Vue 3](https://vuejs.org/) + [TypeScript](https://www.typescriptlang.org/)
+* [Vite](https://vitejs.dev/) (development & build)
+* [Vue Router](https://router.vuejs.org/)
+* [Vue I18n](https://vue-i18n.intlify.dev/)
