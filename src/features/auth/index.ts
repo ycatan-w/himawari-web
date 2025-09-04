@@ -1,2 +1,2 @@
-export { default as LoginView } from './login/LoginView.vue';
-export { default as RegisterView } from './register/RegisterView.vue';
+export { default as LoginView } from './views/LoginView.vue';
+export { default as RegisterView } from './views/RegisterView.vue';

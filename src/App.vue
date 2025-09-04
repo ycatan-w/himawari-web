@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue';
 import { useFeatureColorTheme } from './utils/colorTheme';
+import { LanguageSwitcher } from './components/common';
 
 const route = useRoute();
 const currentBodyClass = computed(() => {
@@ -19,14 +19,14 @@ watch(
   currentBodyClass,
   (newClass: any, oldClass: any) => {
     if (!newClass && !oldClass) {
-      return ;
+      return;
     }
     if (oldClass) {
       document.body.classList.remove(...(oldClass || '').split(' '));
     }
     document.body.classList.add(...(newClass || '').split(' '));
   },
-  { immediate: true }
+  { immediate: true },
 );
 </script>
 

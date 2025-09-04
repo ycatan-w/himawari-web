@@ -14,7 +14,7 @@
     "dropdown": "border-lime-900 bg-lime-900",
     "confirm": "bg-lime-950/80 hover:text-white/80 hover:bg-lime-950/50"
   },
-  "planner_scrollable": {
+  "scrollable_selector": {
     "container": "bg-lime-950",
     "button": "text-lime-700 hover:text-white hover:bg-lime-700",
     "button_selected": "text-white bg-lime-700",
@@ -53,7 +53,7 @@
     "journal_form_container": "bg-lime-900",
     "journal_prose": "prose-lime"
   },
-  "event_flow": {
+  "todayPanel": {
     "flux": "border-lime-400/50",
     "bullet": "bg-lime-400"
   }

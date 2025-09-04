@@ -14,7 +14,7 @@
     "dropdown": "border-indigo-900 bg-indigo-900",
     "confirm": "bg-indigo-950/80 hover:text-white/80 hover:bg-indigo-950/50"
   },
-  "planner_scrollable": {
+  "scrollable_selector": {
     "container": "bg-indigo-950",
     "button": "text-indigo-700 hover:text-white hover:bg-indigo-700",
     "button_selected": "text-white bg-indigo-700",
@@ -53,7 +53,7 @@
     "journal_form_container": "bg-indigo-900",
     "journal_prose": "prose-indigo"
   },
-  "event_flow": {
+  "todayPanel": {
     "flux": "border-indigo-400/50",
     "bullet": "bg-indigo-400"
   }

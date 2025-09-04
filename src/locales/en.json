@@ -1,83 +1,130 @@
 {
-  "journal": "Day Notes",
-  "agenda": "Timeline",
-  "title": {
-    "login": "Sign in to your account",
-    "register": "Create an account"
-  },
-  "label": {
-    "username": "Username",
-    "password": "Password",
-    "confirmPassword": "Confirm password",
-    "january": "January",
-    "february": "February",
-    "march": "March",
-    "april": "April",
-    "may": "May",
-    "june": "June",
-    "july": "July",
-    "august": "August",
-    "september": "September",
-    "october": "October",
-    "november": "November",
-    "december": "December",
-    "year": "Year",
-    "month": "Month",
-    "days": "Days",
-    "hours": "Time slots",
-    "event_title": "What's happening?",
-    "event_description": "Add some details",
-    "new_event": "Plan Something New",
-    "edit_event": "Update Your Plan",
-    "journal_preview": "Preview",
-    "journal_write": "What's on your mind?",
-    "notes": "Thoughts & Ideas",
-    "journal_edit": "Update your thought"
-  },
-  "button": {
-    "signIn": "Sign in",
-    "register": "Create an account",
-    "cancel": "Cancel",
-    "confirm": "Confirm",
-    "event_save": "Save",
-    "event_cancel": "Forget changes",
-    "event_reset": "Start fresh",
-    "event_delete": "Delete",
-    "journal_publish": "Send"
-  },
-  "text": {
-    "noAccount": "Don't have an account yet?",
-    "hasAccount": "Already have an account?"
-  },
-  "link": {
-    "signUp": "Sign up",
-    "login": "Login here"
-  },
-  "error": {
+  "auth": {
     "login": {
-      "invalidAccount": "Invalid username or password."
+      "title": "Sign in to your account",
+      "noAccount": "Don't have an account yet?",
+      "link": "Sign up",
+      "label": {
+        "username": "Username",
+        "password": "Password"
+      },
+      "button": {
+        "signIn": "Sign in"
+      },
+      "error": {
+        "invalidAccount": "Invalid username or password."
+      }
     },
     "register": {
-      "usernameTaken": "Username is already taken.",
-      "passwordMismatch": "Passwords do not match."
+      "title": "Create an account",
+      "hasAccount": "Already have an account?",
+      "link": "Login here",
+      "label": {
+        "username": "Username",
+        "password": "Password",
+        "confirmPassword": "Confirm password"
+      },
+      "button": {
+        "register": "Create an account"
+      },
+      "error": {
+        "usernameTaken": "Username is already taken.",
+        "passwordMismatch": "Passwords do not match."
+      }
     }
   },
-  "help": {
-    "journal_format": "This field uses Markdown format. You can format your text with headings, lists, links, and more.",
-    "journal_cheat": "View the Markdown cheat sheet"
+  "dashboard": {
+    "todayPanel": {
+      "title": {
+        "event": "Things to Do Today",
+        "journal": "Reflections"
+      }
+    },
+    "localStorage": {
+      "button": "Reset demo",
+      "text": "Demo data has been reset. You can start fresh now."
+    }
   },
-  "modal": {
-    "delete": {
-      "title_event": "Delete Event",
-      "title_journal": "Delete Thought",
-      "message_event": "Are you sure you want to delete this event?  This action cannot be undone.",
-      "message_journal": "Are you sure you want to delete this thought? Once it's gone, its gone.",
+  "dateNavigator": {
+    "day": {
+      "title": "Days"
+    },
+    "month": {
+      "title": "Month",
+      "label": {
+        "january": "January",
+        "february": "February",
+        "march": "March",
+        "april": "April",
+        "may": "May",
+        "june": "June",
+        "july": "July",
+        "august": "August",
+        "september": "September",
+        "october": "October",
+        "november": "November",
+        "december": "December"
+      }
+    },
+    "year": {
+      "title": "Year"
+    }
+  },
+  "dayDetails": {
+    "viewTypeTab": {
+      "journal": "Day Notes",
+      "agenda": "Timeline"
+    }
+  },
+  "events": {
+    "timeline": {
+      "title": "Time slots"
+    },
+    "form": {
+      "event": {
+        "title": "What's happening?",
+        "description": "Add some details"
+      },
+      "button": {
+        "save": "Save",
+        "cancel": "Forget changes",
+        "reset": "Start fresh"
+      },
+      "create": {
+        "title": "Plan Something New"
+      },
+      "update": {
+        "title": "Update Your Plan"
+      },
+      "delete": {
+        "title": "Delete Event",
+        "message": "Are you sure you want to delete this event?  This action cannot be undone."
+      }
+    }
+  },
+  "journal": {
+    "feed": {
+      "title": "Thoughts & Ideas",
+      "preview": "Preview",
+      "delete": {
+        "title": "Delete Thought",
+        "message": "Are you sure you want to delete this thought? Once it's gone, its gone."
+      }
+    },
+    "form": {
+      "update": "Update your thought",
+      "write": "What's on your mind?",
+      "helper": {
+        "message": "This field uses Markdown format. You can format your text with headings, lists, links, and more.",
+        "link": "View the Markdown cheat sheet"
+      }
+    }
+  },
+  "common": {
+    "button": {
       "cancel": "Cancel",
-      "delete": "Delete"
+      "delete": "Delete",
+      "confirm": "Confirm"
     }
-  },
-  "flow": {
-    "event": "Things to Do Today",
-    "journal": "Reflections"
   }
 }

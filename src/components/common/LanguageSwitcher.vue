@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { useLanguage } from './useLanguage';
+import { useI18n } from 'vue-i18n';
+import { availableLanguages, saveLanguage, type LangCode } from '@/modules/lang';
 
-const { availableLanguages, switchLanguageAction } = useLanguage();
-
+const { locale } = useI18n();
+function switchLanguageAction(lang: LangCode) {
+  locale.value = lang;
+  saveLanguage(lang);
+}
 </script>
 
 <template>
-    <div
-      class="fixed top-3 right-4 z-51 flex gap-2 p-1 bg-black/30 rounded-full backdrop-blur-sm"
-    >
+  <div class="fixed top-3 right-4 z-51 flex gap-2 p-1 bg-black/30 rounded-full backdrop-blur-sm">
     <button
       v-for="lang in availableLanguages"
       :key="lang.code"

@@ -1,2 +1,2 @@
-export { default as EventForm } from './EventForm.vue';
-export { default as Timeline } from './Timeline.vue';
+export { default as EventSectionView } from './views/EventSectionView.vue';
+export { default as EventPreview } from './components/EventPreview.vue';

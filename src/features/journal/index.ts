@@ -1,1 +1,2 @@
-export { default as JournalForm } from './JournalForm.vue';
+export { default as JournalSectionView } from './views/JournalSectionView.vue';
+export { default as JournalPreview } from './components/JournalPreview.vue';

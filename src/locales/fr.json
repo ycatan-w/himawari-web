@@ -1,83 +1,130 @@
 {
-  "journal": "Notes du jour",
-  "agenda": "Chronologie",
-  "title": {
-    "login": "Connectez-vous à votre compte",
-    "register": "Créez un compte"
-  },
-  "label": {
-    "username": "Nom d'utilisateur",
-    "password": "Mot de passe",
-    "confirmPassword": "Confirmez le mot de passe",
-    "january": "Janvier",
-    "february": "Février",
-    "march": "Mars",
-    "april": "Avril",
-    "may": "Mai",
-    "june": "Juin",
-    "july": "Juillet",
-    "august": "Août",
-    "september": "Septembre",
-    "october": "Octobre",
-    "november": "Novembre",
-    "december": "Décembre",
-    "year": "Année",
-    "month": "Mois",
-    "days": "Jours",
-    "hours": "Créneaux horaires",
-    "event_title": "Quoi de prévu ?",
-    "event_description": "Ajoutez quelques détails",
-    "new_event": "Planifier un nouvel événement",
-    "edit_event": "Mettre à jour l'événement",
-    "journal_preview": "Aperçu",
-    "journal_write": "Qu'avez-vous en tête ?",
-    "notes": "Pensées et idées",
-    "journal_edit": "Mettre à jour la pensée"
-  },
-  "button": {
-    "signIn": "Se connecter",
-    "register": "Créer un compte",
-    "cancel": "Annuler",
-    "confirm": "Confirmer",
-    "event_save": "Enregistrer",
-    "event_cancel": "Ignorer les changements",
-    "event_reset": "Repartir à zéro",
-    "event_delete": "Supprimer",
-    "journal_publish": "Envoyer"
-  },
-  "text": {
-    "noAccount": "Pas encore de compte ?",
-    "hasAccount": "Vous avez déjà un compte ?"
-  },
-  "link": {
-    "signUp": "Créer un compte",
-    "login": "Connexion ici"
-  },
-  "error": {
+  "auth": {
     "login": {
-      "invalidAccount": "Nom d'utilisateur ou mot de passe incorrect."
+      "title": "Connectez-vous à votre compte",
+      "noAccount": "Pas encore de compte ?",
+      "link": "Créer un compte",
+      "label": {
+        "username": "Nom d'utilisateur",
+        "password": "Mot de passe"
+      },
+      "button": {
+        "signIn": "Se connecter"
+      },
+      "error": {
+        "invalidAccount": "Nom d'utilisateur ou mot de passe incorrect."
+      }
     },
     "register": {
-      "usernameTaken": "Ce nom d'utilisateur est déjà utilisé.",
-      "passwordMismatch": "Les mots de passe ne correspondent pas."
+      "title": "Créez un compte",
+      "hasAccount": "Vous avez déjà un compte ?",
+      "link": "Connexion ici",
+      "label": {
+        "username": "Nom d'utilisateur",
+        "password": "Mot de passe",
+        "confirmPassword": "Confirmez le mot de passe"
+      },
+      "button": {
+        "register": "Créer un compte"
+      },
+      "error": {
+        "usernameTaken": "Ce nom d'utilisateur est déjà utilisé.",
+        "passwordMismatch": "Les mots de passe ne correspondent pas."
+      }
     }
   },
-  "help": {
-    "journal_format": "Ce champ utilise le format Markdown. Vous pouvez formater votre texte avec des titres, listes, liens, etc.",
-    "journal_cheat": "Voir la fiche pratique Markdown"
+  "dashboard": {
+    "todayPanel": {
+      "title": {
+        "event": "À faire aujourd'hui",
+        "journal": "Réflexions"
+      }
+    },
+    "localStorage": {
+      "button": "Réinit. démo",
+      "text": "Les données de démonstration ont été réinitialisées. Vous pouvez commencer à nouveau."
+    }
   },
-  "modal": {
-    "delete": {
-      "title_event": "Supprimer l'événement",
-      "title_journal": "Supprimer une pensée",
-      "message_event": "Voulez-vous vraiment supprimer cet événement ? Cette action est définitive.",
-      "message_journal": "Voulez-vous vraiment supprimer cette pensée ? Vous ne pourrez pas revenir en arrière.",
+  "dateNavigator": {
+    "day": {
+      "title": "Jours"
+    },
+    "month": {
+      "title": "Mois",
+      "label": {
+        "january": "Janvier",
+        "february": "Février",
+        "march": "Mars",
+        "april": "Avril",
+        "may": "Mai",
+        "june": "Juin",
+        "july": "Juillet",
+        "august": "Août",
+        "september": "Septembre",
+        "october": "Octobre",
+        "november": "Novembre",
+        "december": "Décembre"
+      }
+    },
+    "year": {
+      "title": "Année"
+    }
+  },
+  "dayDetails": {
+    "viewTypeTab": {
+      "journal": "Notes du jour",
+      "agenda": "Chronologie"
+    }
+  },
+  "events": {
+    "timeline": {
+      "title": "Créneaux horaires"
+    },
+    "form": {
+      "event": {
+        "title": "Quoi de prévu ?",
+        "description": "Ajoutez quelques détails"
+      },
+      "button": {
+        "save": "Enregistrer",
+        "cancel": "Ignorer les changements",
+        "reset": "Repartir à zéro"
+      },
+      "create": {
+        "title": "Planifier un nouvel événement"
+      },
+      "update": {
+        "title": "Mettre à jour l'événement"
+      },
+      "delete": {
+        "title": "Supprimer l'événement",
+        "message": "Voulez-vous vraiment supprimer cet événement ? Cette action est définitive."
+      }
+    }
+  },
+  "journal": {
+    "feed": {
+      "title": "Pensées et idées",
+      "preview": "Aperçu",
+      "delete": {
+        "title": "Supprimer une pensée",
+        "message": "Voulez-vous vraiment supprimer cette pensée ? Vous ne pourrez pas revenir en arrière."
+      }
+    },
+    "form": {
+      "update": "Mettre à jour la pensée",
+      "write": "Qu'avez-vous en tête ?",
+      "helper": {
+        "message": "Ce champ utilise le format Markdown. Vous pouvez formater votre texte avec des titres, listes, liens, etc.",
+        "link": "Voir la fiche pratique Markdown"
+      }
+    }
+  },
+  "common": {
+    "button": {
       "cancel": "Annuler",
-      "delete": "Supprimer"
+      "delete": "Supprimer",
+      "confirm": "Confirmer"
     }
-  },
-  "flow": {
-    "event": "À faire aujourd'hui",
-    "journal": "Réflexions"
   }
 }

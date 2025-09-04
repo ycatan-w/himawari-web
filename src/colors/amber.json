@@ -14,7 +14,7 @@
     "dropdown": "border-amber-900 bg-amber-900",
     "confirm": "bg-amber-950/80 hover:text-white/80 hover:bg-amber-950/50"
   },
-  "planner_scrollable": {
+  "scrollable_selector": {
     "container": "bg-amber-950",
     "button": "text-amber-700 hover:text-white hover:bg-amber-700",
     "button_selected": "text-white bg-amber-700",
@@ -52,7 +52,7 @@
     "journal_form_container": "bg-amber-900",
     "journal_prose": "prose-amber"
   },
-  "event_flow": {
+  "todayPanel": {
     "flux": "border-amber-400/50",
     "bullet": "bg-amber-400"
   }
