@@ -20,7 +20,7 @@ const props = defineProps<{
   entries: JournalData[];
 }>();
 const { date } = inject('journalContext') as {
-  date: Date;
+  date: string;
 };
 const { textareaElemRef, textareaRef, maxHeight, autoResize, onEnter, onEscape } = useJournalForm(
   newEntry,
@@ -77,6 +77,9 @@ const formColor = useCommonColorTheme(colorPalette, 'form');
         ]"
       >
         {{ $t('journal.form.write') }}
+        <span :class="[`text-sm font-extrabold`, 5000 - textareaRef.length < 0 && 'text-white/80']">
+          {{ 5000 - textareaRef.length }} / 5000
+        </span>
       </label>
       <button
         type="button"

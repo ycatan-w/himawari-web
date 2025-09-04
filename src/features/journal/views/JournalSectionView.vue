@@ -5,14 +5,14 @@ import JournalFeed from '../components/JournalFeed.vue';
 import JournalForm from '../components/JournalForm.vue';
 
 const props = defineProps<{
-  date: Date;
+  date: string;
 }>();
 provide('journalContext', {
   date: props.date,
 });
 
-const dateStr = props.date.toISOString().split('T')[0];
-const { journalEntriesRef, newEntryRef, entryToEditRef } = useJournalSection(dateStr);
+// const dateStr = props.date.toISOString().split('T')[0];
+const { journalEntriesRef, newEntryRef, entryToEditRef } = useJournalSection(props.date);
 </script>
 
 <template>

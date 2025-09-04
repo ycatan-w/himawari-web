@@ -4,10 +4,10 @@ import ZoomControls from '../components/ZoomControls.vue';
 import EventTimeline from '../components/EventTimeline.vue';
 import EventForm from '../components/EventForm.vue';
 
-const props = defineProps<{ date: Date }>();
-const dateStr = props.date.toISOString().split('T')[0];
-const { selectedEventIdRef, newEventStartRef, scaleFactorRef, rawEventsRef } =
-  useEventSection(dateStr);
+const props = defineProps<{ date: string }>();
+const { selectedEventIdRef, newEventStartRef, scaleFactorRef, rawEventsRef } = useEventSection(
+  props.date,
+);
 </script>
 
 <template>

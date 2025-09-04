@@ -4,7 +4,7 @@ import { useRegister } from '../composables/useRegister';
 import { useFeatureColorTheme } from '@/utils/colorTheme';
 import { IconRegister } from '@/components/icons';
 
-const { form, errors, registerAction } = useRegister();
+const { form, usernameErrors, passwordErrors, registerAction } = useRegister();
 const { colorPalette } = useFeatureColorTheme('auth');
 </script>
 
@@ -15,8 +15,8 @@ const { colorPalette } = useFeatureColorTheme('auth');
       id="username"
       type="text"
       :label="$t('auth.register.label.username')"
-      :error="errors.username"
-      :errorMsg="$t('auth.register.error.usernameTaken')"
+      :error="usernameErrors.length > 0"
+      :errorMsg="usernameErrors"
       :color-scheme="colorPalette"
       autocomplete="off"
       required
@@ -27,7 +27,7 @@ const { colorPalette } = useFeatureColorTheme('auth');
       id="password"
       type="password"
       :label="$t('auth.register.label.password')"
-      :error="errors.password"
+      :error="passwordErrors.length > 0"
       :color-scheme="colorPalette"
       autocomplete="off"
       required
@@ -37,8 +37,8 @@ const { colorPalette } = useFeatureColorTheme('auth');
       id="confirm_password"
       type="password"
       :label="$t('auth.register.label.confirmPassword')"
-      :error="errors.password"
-      :errorMsg="$t('auth.register.error.passwordMismatch')"
+      :error="passwordErrors.length > 0"
+      :errorMsg="passwordErrors"
       :color-scheme="colorPalette"
       autocomplete="off"
       required

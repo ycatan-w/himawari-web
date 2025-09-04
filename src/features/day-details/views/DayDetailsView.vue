@@ -7,7 +7,7 @@ import { useDayDetails } from '../composables/useDayDetails';
 import ViewTypeContentTabs from '../components/ViewTypeContentTabs.vue';
 
 const props = defineProps<{
-  date: Date;
+  date: string;
   isShown: boolean;
   close: () => void;
 }>();
@@ -28,7 +28,7 @@ const { modeRef, featureColorTheme } = useDayDetails(toRef(props, 'isShown'));
       <h5
         class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-semibold mb-4 inline-flex items-center capitalize"
       >
-        <span class="mr-3"><IconFlower /></span> {{ $d(date, { dateStyle: 'full' }) }}
+        <span class="mr-3"><IconFlower /></span> {{ $d(new Date(date), { dateStyle: 'full' }) }}
       </h5>
       <div class="fixed top-4.5 right-28 z-51 flex bg-black/30 rounded-full backdrop-blur-sm">
         <button

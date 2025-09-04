@@ -5,10 +5,10 @@ export interface AuthData {
 
 export interface NewEventData {
   title: string;
-  start: number;
-  date: string;
-  end: number;
   description: string;
+  date: string;
+  start: number;
+  end: number;
 }
 
 export interface EventData extends NewEventData {
@@ -24,6 +24,7 @@ export interface JournalData {
 export abstract class BaseProvider {
   abstract login(username: string, password: string): Promise<AuthData>;
   abstract register(username: string, password: string): Promise<AuthData>;
+  abstract logout(token: string | null): Promise<void>;
 
   abstract getEvents(date: string): Promise<EventData[]>;
   abstract addEvent(event: NewEventData): Promise<EventData>;

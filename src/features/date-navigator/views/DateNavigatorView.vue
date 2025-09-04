@@ -13,7 +13,11 @@ const { showOverview } = useDateNavigator();
 const { yearRef, currentYear, years } = useYears(5);
 const { monthRef, currentMonthRef, months } = useMonths(yearRef);
 const { dayRef, currentDayRef, daysInMonth } = useDays(yearRef, monthRef);
-const selectedDate = computed(() => new Date(yearRef.value, monthRef.value, dayRef.value));
+// const selectedDate = computed(() => new Date(yearRef.value, monthRef.value, dayRef.value));
+const selectedDate = computed(
+  () =>
+    `${yearRef.value}-${(monthRef.value + 1).toString().padStart(2, '0')}-${dayRef.value.toString().padStart(2, '0')}`,
+);
 </script>
 
 <template>

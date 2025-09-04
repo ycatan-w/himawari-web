@@ -1,4 +1,10 @@
-import { BaseProvider, type AuthData, type EventData, type JournalData, type NewEventData } from './base-provider';
+import {
+  BaseProvider,
+  type AuthData,
+  type EventData,
+  type JournalData,
+  type NewEventData,
+} from './base-provider';
 import { type ProviderError, ProviderErrorCode } from './provider-errors';
 import { demoData } from './demo-data';
 
@@ -51,7 +57,7 @@ export class LocalStorageProvider extends BaseProvider {
     if (user && username === user.username && password === user.password) {
       return {
         token: JSON.stringify(user),
-        username: username
+        username: username,
       };
     }
     throw new Error('Invalid credentials');
@@ -64,16 +70,17 @@ export class LocalStorageProvider extends BaseProvider {
       throw new Error('Invalid username or password.');
     }
 
-    const last = users[users.length - 1] || { };
+    const last = users[users.length - 1] || {};
     const newUser = { username, password, id: (last?.id || 0) + 1 };
     users.push(newUser);
     this.save(this.usersKey, users);
 
     return {
       token: JSON.stringify(newUser),
-      username: username
+      username: username,
     };
   }
+  async logout(token: string | null): Promise<void> {}
 
   // ---- EVENTS ----
   async getEvents(date: string) {
@@ -96,11 +103,11 @@ export class LocalStorageProvider extends BaseProvider {
     if (Object.keys(errors).length > 0) {
       throw <ProviderError>{
         code: ProviderErrorCode.VALIDATION_ERROR,
-        details: errors
+        details: errors,
       };
     }
     const events = this.load<EventData>(this.eventsKey);
-    const last = events[events.length - 1] || { };
+    const last = events[events.length - 1] || {};
     const newEvent = { ...event, id: (last?.id || 0) + 1 };
     events.push(newEvent);
     this.save(this.eventsKey, events);
@@ -109,14 +116,14 @@ export class LocalStorageProvider extends BaseProvider {
 
   async updateEvent(event: EventData) {
     const events = this.load<EventData>(this.eventsKey);
-    const idx = events.findIndex(e => e.id === event.id);
+    const idx = events.findIndex((e) => e.id === event.id);
     if (idx === -1) throw { code: ProviderErrorCode.NOT_FOUND } as ProviderError;
     events[idx] = event;
     this.save(this.eventsKey, events);
     return event;
   }
   async deleteEvent(id: number) {
-    const events = this.load<EventData>(this.eventsKey).filter(e => e.id !== id);
+    const events = this.load<EventData>(this.eventsKey).filter((e) => e.id !== id);
     this.save(this.eventsKey, events);
   }
 
@@ -127,7 +134,7 @@ export class LocalStorageProvider extends BaseProvider {
   }
   async addJournal(entry: Omit<JournalData, 'id'>) {
     const journals = this.load<JournalData>(this.journalKey);
-    const last = journals[journals.length - 1] || { };
+    const last = journals[journals.length - 1] || {};
     const newJournal = { ...entry, id: (last?.id || 0) + 1 };
     journals.push(newJournal);
     this.save(this.journalKey, journals);
@@ -135,14 +142,14 @@ export class LocalStorageProvider extends BaseProvider {
   }
   async updateJournal(entry: JournalData) {
     const journals = this.load<JournalData>(this.journalKey);
-    const idx = journals.findIndex(j => j.id === entry.id);
+    const idx = journals.findIndex((j) => j.id === entry.id);
     if (idx === -1) throw { code: ProviderErrorCode.NOT_FOUND } as ProviderError;
     journals[idx] = entry;
     this.save(this.journalKey, journals);
     return entry;
   }
   async deleteJournal(id: number) {
-    const journals = this.load<JournalData>(this.journalKey).filter(j => j.id !== id);
+    const journals = this.load<JournalData>(this.journalKey).filter((j) => j.id !== id);
     this.save(this.journalKey, journals);
   }
 }

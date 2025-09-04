@@ -3,14 +3,14 @@ import { useAttrs } from 'vue';
 import { useCommonColorTheme, type Theme } from '@/utils/colorTheme';
 import FloatingInput from './FloatingInput.vue';
 
-const modelValue = defineModel();
+const modelValue = defineModel<string>({ default: '' });
 const { colorScheme } = defineProps<{
   colorScheme: Theme;
   id: string;
   label: string;
   error?: boolean;
   type?: string;
-  errorMsg?: string;
+  errorMsg?: string | string[];
 }>();
 const attrs = useAttrs();
 const { input_standard, label_standard } = useCommonColorTheme(colorScheme, 'form');

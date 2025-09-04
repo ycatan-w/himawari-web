@@ -6,7 +6,7 @@ export function useJournalForm(
   newEntry: ModelRef<string>,
   entryToEdit: ModelRef<{ id: number | null; text: string }>,
   entries: Ref<JournalData[]>,
-  date: Date,
+  date: string,
 ) {
   const textareaElemRef = ref<HTMLTextAreaElement | null>(null);
   const textareaRef = ref<string>('');
@@ -26,13 +26,13 @@ export function useJournalForm(
       }
       const entry = entries.value[entryIndex];
       entry.text = journalEntry;
-      provider.updateJournal({ ...entry });
+      provider.updateJournal({ ...entry, date });
       return;
     }
     provider
       .addJournal({
         text: journalEntry,
-        date: date.toISOString().split('T')[0],
+        date: date,
       })
       .then((addedEntry) => {
         entries.value.push(addedEntry);

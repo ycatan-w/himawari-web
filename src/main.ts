@@ -1,21 +1,22 @@
-import '@/assets/main.css'
+import '@/assets/main.css';
 
-import { createApp } from 'vue'
-import { createI18n } from 'vue-i18n'
-import App from '@/App.vue'
-import router from '@/router.ts'
-import { initProvider } from '@/modules/providers'
-import { defaultLanguage, getSavedLanguage, messages } from '@/modules/lang'
+import { createApp } from 'vue';
+import { createI18n } from 'vue-i18n';
+import App from '@/App.vue';
+import router from '@/router.ts';
+import { initProvider } from '@/modules/providers';
+import { defaultLanguage, getSavedLanguage, messages } from '@/modules/lang';
 
-initProvider('local');
+const provider = import.meta.env.VITE_PROVIDER as 'local' | 'api';
+initProvider(provider);
 createApp(App)
   .use(
     createI18n({
-        legacy: false,
-        locale: getSavedLanguage(),
-        fallbackLocale: defaultLanguage,
-        messages,
-    })
+      legacy: false,
+      locale: getSavedLanguage(),
+      fallbackLocale: defaultLanguage,
+      messages,
+    }),
   )
   .use(router)
-  .mount('#app')
+  .mount('#app');

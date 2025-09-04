@@ -12,18 +12,27 @@ const selectedEventId = defineModel<number>('selectedEventId', { default: 0 });
 const draftStart = defineModel<number | null>('draftStart', { default: null });
 
 const props = defineProps<{
-  date: Date;
+  date: string;
   rawEvents: EventData[];
 }>();
-const { form, selectedEvent, isEdition, addAction, editAction, deleteAction } = useEventForm(
-  props.date,
-  selectedEventId,
-  toRef(props, 'rawEvents'),
-  draftStart,
-);
+const {
+  form,
+  selectedEvent,
+  titleErrors,
+  descriptionErrors,
+  timeErrors,
+  isEdition,
+  addAction,
+  editAction,
+  deleteAction,
+  onResetClick,
+} = useEventForm(props.date, selectedEventId, toRef(props, 'rawEvents'), draftStart);
 const confirmDeleteOpen = ref(false);
-const { colorPalette, featureColorTheme } = useFeatureColorTheme('overview');
+const { colorPalette } = useFeatureColorTheme('overview');
 const formColor = useCommonColorTheme(colorPalette, 'form');
+function testAction() {
+  console.log(form.title);
+}
 </script>
 
 <template>
@@ -67,7 +76,7 @@ const formColor = useCommonColorTheme(colorPalette, 'form');
               class="inline-flex items-center font-bold capitalize text-xs sm:text-sm lg:text-lg"
             >
               <span class="mr-3"><IconClock /></span>
-              {{ $d(date, { dateStyle: 'full' }) }}
+              {{ $d(new Date(date), { dateStyle: 'full' }) }}
             </div>
           </div>
           <div class="relative w-full md:w-2/3 ml-3 md:ml-0">
@@ -76,6 +85,9 @@ const formColor = useCommonColorTheme(colorPalette, 'form');
             <TimePicker v-model="form.end" :theme-colors="colorPalette" />
           </div>
         </div>
+        <p v-if="timeErrors.length === 1" class="mt-2 text-sm text-white/80">
+          {{ timeErrors[0] }}
+        </p>
 
         <FloatingInputStandard
           v-model="form.title"
@@ -83,6 +95,10 @@ const formColor = useCommonColorTheme(colorPalette, 'form');
           type="text"
           :color-scheme="colorPalette"
           :label="$t('events.form.event.title')"
+          :max-length="100"
+          :error="titleErrors.length > 0"
+          :error-msg="titleErrors"
+          @input="testAction"
           autocomplete="off"
           required
         />
@@ -109,7 +125,25 @@ const formColor = useCommonColorTheme(colorPalette, 'form');
             ]"
           >
             {{ $t('events.form.event.description') }}
+            <span
+              :class="[
+                `text-sm font-extrabold`,
+                1000 - form.description.length < 0 && 'text-white/80',
+              ]"
+            >
+              {{ 1000 - form.description.length }} / 1000
+            </span>
           </label>
+        </div>
+        <p v-if="descriptionErrors.length === 1" class="mt-2 text-sm text-white/80">
+          {{ descriptionErrors[0] }}
+        </p>
+        <div v-else-if="descriptionErrors.length > 1" class="mt-2">
+          <ul class="list-inside list-[circle]">
+            <li v-for="message in descriptionErrors" class="text-xs text-white/80">
+              {{ message }}
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -118,7 +152,7 @@ const formColor = useCommonColorTheme(colorPalette, 'form');
       <div class="flex flex-col-reverse gap-4 sm:flex-row sm:gap-3 w-full sm:w-auto">
         <button
           type="button"
-          @click="isEdition() ? (selectedEventId = 0) : (draftStart = null)"
+          @click="onResetClick"
           class="text-sm font-medium text-white/80 inline-flex items-right text-center underline-offset-4 hover:underline transition-colors sm:self-center cursor-pointer"
         >
           <IconCancel v-if="isEdition()" />

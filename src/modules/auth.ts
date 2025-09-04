@@ -1,7 +1,7 @@
-import { getProvider } from "@/modules/providers";
+import { getProvider } from '@/modules/providers';
 const provider = () => getProvider();
 
-const STORAGE_USERNAME_KEY = 'currentUser'
+const STORAGE_USERNAME_KEY = 'currentUser';
 const STORAGE_AUTH_TOKEN_KEY = 'authToken';
 
 export async function register(username: string, password: string) {
@@ -14,7 +14,8 @@ export async function login(username: string, password: string) {
   authenticate(authData.token, authData.username);
 }
 
-export function logout() {
+export async function logout() {
+  await provider().logout(getToken());
   deauthenticate();
 }
 

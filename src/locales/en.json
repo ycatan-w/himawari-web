@@ -1,4 +1,28 @@
 {
+  "api": {
+    "register": {
+      "username": {
+        "invalid_username_length": "Username length must be between 4 and 50 characters.",
+        "invalid_username_chars": "Username must start with a letter and contain only letters, numbers, dots (.), underscores (_), dashes (-), or {'@'}.",
+        "already_exists_username": "Username is already taken."
+      },
+      "password": {
+        "invalid_password_length": "Password must be at least 8 characters."
+      }
+    },
+    "events": {
+      "title": {
+        "required_title": "Title cannot be empty.",
+        "invalid_title_length": "Title cannot contains more than 100 chars."
+      },
+      "description": {
+        "invalid_description_length": "Description cannot contains more than 1000 chars."
+      },
+      "start": {
+        "invalid_time_range": "Start cannot be the same or after End"
+      }
+    }
+  },
   "auth": {
     "login": {
       "title": "Sign in to your account",
