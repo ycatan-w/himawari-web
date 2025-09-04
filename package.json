@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:github": "vite --mode github",
     "build": "run-p type-check \"build-only {@}\" --",
     "build:github": "run-p type-check \"build-github-only {@}\" --",
     "preview": "vite preview",
