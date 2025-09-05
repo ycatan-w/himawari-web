@@ -30,7 +30,9 @@ const { background, prose } = useCommonColorTheme(props.colorPalette, 'journal_p
     >
       <div class="flex items-center space-x-2">
         <span class="text-sm font-semibold text-gray-200">{{ currentUser ?? 'User' }}</span>
-        <span class="text-sm font-normal text-white/70 italic">{{ journal.date }}</span>
+        <span class="text-sm font-normal text-white/70 italic">{{
+          $d(new Date(journal.date), { dateStyle: 'short' })
+        }}</span>
       </div>
       <div :class="prose">
         <p class="mt-0 mb-0 text-sm font-normal" v-html="renderedMarkdown(journal.text)"></p>

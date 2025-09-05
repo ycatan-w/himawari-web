@@ -55,7 +55,9 @@ const { colorPalette, featureColorTheme } = useFeatureColorTheme('overview');
       <div class="flex-1">
         <div class="flex items-center gap-2">
           <span class="font-semibold text-gray-200 opacity-80">{{ currentUser ?? 'User' }} </span>
-          <span class="text-xs text-white/70 italic opacity-80">{{ entry.date }}</span>
+          <span class="text-xs text-white/70 italic opacity-80">{{
+            $d(new Date(entry.date), { dateStyle: 'short' })
+          }}</span>
 
           <div class="flex items-center space-x-1 ml-auto text-xs">
             <button
